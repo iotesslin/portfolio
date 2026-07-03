@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tess-Lin 林佳妤</title>
+<meta name="description" content="林佳妤 Tess Lin · AI 研發工程師 · GAI / LLM / HCI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+  --paper:#F4EEEA;
+  --paper-2:#E9DFDA;
+  --card:#FBF8F5;
+  --ink:#332A2E;
+  --ink-soft:#8A7B7E;
+  --line:#DCCBC9;
+  --purple:#7A1B6E;
+  --purple-deep:#4A0F45;
+  --purple-tint:#F1E3EE;
+  --gold:#EFA23B;
+  --gold-deep:#C77E1E;
+  --navy:#1E3350;
+  --radius:8px;
+  --wrap:1120px;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans TC','IBM Plex Mono',sans-serif;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{ margin:0; font-family:'Noto Serif TC','Fraunces',serif; }
+p{ margin:0; }
+a{ color:inherit; }
+img{ max-width:100%; display:block; }
+.wrap{ max-width:var(--wrap); margin:0 auto; padding:0 28px; }
+.mono{ font-family:'IBM Plex Mono',monospace; }
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.eyebrow .dot{
+  width:6px; height:6px; border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 3px var(--purple-tint);
+  flex:0 0 auto;
+}
+::selection{ background:var(--gold); color:var(--purple-deep); }
+
+/* ---------- ticket / notch signature shape ---------- */
+.ticket{
+  position:relative;
+  background:var(--purple);
+  color:#fff;
+  border-radius:6px 6px 6px 26px;
+  overflow:visible;
+}
+.ticket::before{
+  content:"";
+  position:absolute;
+  top:-1px; left:26px;
+  width:34px; height:34px;
+  background:var(--paper);
+  border-radius:50%;
+  transform:translateY(-50%);
+}
+.ticket-gold{
+  position:absolute; left:0; top:34px;
+  width:64px; height:3px; background:var(--gold);
+}
+
+/* ---------- nav ---------- */
+header.site-nav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  background:rgba(244,238,234,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--wrap); margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px;
+}
+.nav-name{
+  font-family:'Fraunces',serif; font-weight:600; font-size:18px; letter-spacing:.01em;
+  white-space:nowrap;
+}
+.nav-name span{ color:var(--purple); }
+.nav-links{
+  display:flex; gap:22px; list-style:none; margin:0; padding:0;
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.05em;
+  overflow-x:auto; scrollbar-width:none;
+}
+.nav-links::-webkit-scrollbar{ display:none; }
+.nav-links a{
+  text-decoration:none; color:var(--ink-soft); white-space:nowrap;
+  border-bottom:1px solid transparent; padding-bottom:3px;
+  transition:color .15s, border-color .15s;
+}
+.nav-links a:hover{ color:var(--purple); border-color:var(--gold); }
+.nav-right{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+.lang-toggle{
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.04em;
+  background:transparent; border:1px solid var(--purple); color:var(--purple);
+  padding:8px 14px; border-radius:20px; cursor:pointer;
+  transition:background .15s, color .15s;
+  display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+}
+.lang-toggle:hover{ background:var(--purple); color:#fff; }
+.lang-toggle .globe{ font-size:12px; }
+.nav-cta{
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.04em;
+  background:var(--purple); color:#fff; padding:9px 16px; border-radius:4px;
+  text-decoration:none; white-space:nowrap; flex:0 0 auto;
+  transition:background .15s;
+}
+.nav-cta:hover{ background:var(--purple-deep); }
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  padding:150px 0 90px;
+  overflow:hidden;
+}
+#bg-nodes{ position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.55; }
+.hero-inner{ position:relative; z-index:1; display:grid; grid-template-columns:1.35fr .9fr; gap:56px; align-items:end; }
+.hero-name{
+  font-size:clamp(52px,7.4vw,96px);
+  font-weight:700;
+  line-height:.98;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin:18px 0 6px;
+}
+.hero-name em{
+  font-style:normal; color:var(--purple);
+}
+.hero-en{
+  font-family:'IBM Plex Mono',monospace; font-size:14px; letter-spacing:.14em;
+  color:var(--gold-deep); text-transform:uppercase; margin-bottom:22px;
+}
+.hero-role{
+  font-size:16.5px; line-height:1.75; color:var(--ink); max-width:520px; margin-bottom:16px;
+}
+.hero-role strong{ color:var(--purple); font-weight:600; }
+.hero-pitch{
+  font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+  font-size:19px; color:var(--ink-soft); max-width:520px; margin-bottom:28px;
+}
+.hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+.btn{
+  font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.04em;
+  padding:13px 22px; border-radius:4px; text-decoration:none;
+  border:1px solid var(--purple); transition:transform .12s ease, opacity .12s ease, background .15s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn.solid{ background:var(--purple); color:#fff; }
+.btn.solid:hover{ background:var(--purple-deep); }
+.btn.ghost{ background:transparent; color:var(--purple); }
+.btn.ghost:hover{ background:var(--purple-tint); }
+.btn:active{ transform:translateY(1px); }
+
+.hero-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:26px 24px;
+  box-shadow:0 24px 48px -30px rgba(60,20,55,.35);
+}
+.hero-card .field-row{ display:grid; grid-template-columns:58px 1fr; gap:2px 12px; font-size:12.5px; margin-bottom:12px; }
+.hero-card .field-row:last-of-type{ margin-bottom:0; }
+.hero-card .field-label{ color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em; font-size:9.5px; padding-top:2px; font-family:'IBM Plex Mono',monospace;}
+.hero-card .field-value a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+.hero-card .field-value a:hover{ color:var(--purple); border-color:var(--purple); }
+.hero-card .rule{ height:1px; margin:18px 0; background-image:linear-gradient(to right,var(--line) 0 6px, transparent 6px 10px); background-size:10px 1px; }
+.stat-row{ display:flex; gap:18px; flex-wrap:wrap; }
+.stat{ flex:1 1 40%; }
+.stat .num{ font-family:'Fraunces',serif; font-weight:600; font-size:26px; color:var(--purple); line-height:1; }
+.stat .lbl{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase; margin-top:4px; }
+
+/* ---------- section chapter header (ticket style) ---------- */
+.section{ padding:78px 0; border-top:1px solid var(--line); }
+.chapter{
+  display:flex; align-items:center; gap:22px; margin-bottom:44px;
+}
+.chapter-badge{
+  width:82px; height:82px; flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Anton',sans-serif; font-size:32px; color:#fff;
+}
+.chapter-title h2{ font-size:clamp(26px,3.4vw,36px); font-weight:700; color:var(--ink); }
+.chapter-title .sub{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.12em; color:var(--gold-deep); text-transform:uppercase; margin-top:4px; }
+
+/* ---------- about ---------- */
+.about-grid{ display:grid; grid-template-columns:1.4fr .8fr; gap:48px; }
+.about-text p{ margin-bottom:16px; font-size:15px; color:var(--ink); }
+.about-text .quote{
+  font-family:'Fraunces',serif; font-size:20px; font-style:italic; color:var(--purple);
+  border-left:3px solid var(--gold); padding-left:18px; margin:24px 0;
+}
+.disc-card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+}
+.disc-card h3{ font-size:13px; font-family:'IBM Plex Mono',monospace; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:16px; }
+.disc-bar{ margin-bottom:12px; }
+.disc-bar .top{ display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px; gap:10px; }
+.disc-bar .top span:first-child{ flex:1 1 auto; }
+.disc-bar .track{ height:7px; border-radius:4px; background:var(--paper-2); overflow:hidden; }
+.disc-bar .fill{ height:100%; border-radius:4px; background:var(--purple); }
+.disc-bar.hi .fill{ background:var(--gold); }
+.disc-note{ font-size:12px; color:var(--ink-soft); margin-top:14px; line-height:1.6; }
+.mbti-note{ font-size:12px; color:var(--purple); margin-top:14px; line-height:1.6; }
+
+/* ---------- timeline ---------- */
+.timeline{ display:flex; flex-direction:column; gap:0; }
+.tl-item{ display:grid; grid-template-columns:150px 1fr; gap:24px; padding:26px 0; border-top:1px dashed var(--line); }
+.tl-item:first-child{ border-top:none; }
+.tl-date{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold-deep); letter-spacing:.03em; padding-top:3px; }
+.tl-role{ font-weight:600; font-size:16.5px; color:var(--ink); margin-bottom:3px; }
+.tl-org{ font-size:13px; color:var(--ink-soft); margin-bottom:10px; }
+.tl-item ul{ margin:0 0 12px; padding-left:18px; font-size:14px; }
+.tl-item li{ margin-bottom:5px; }
+.tag-row{ display:flex; gap:8px; flex-wrap:wrap; }
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.03em;
+  background:var(--purple-tint); color:var(--purple-deep); padding:5px 10px; border-radius:20px;
+}
+
+/* ---------- education ---------- */
+.edu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.edu-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:24px; }
+.edu-card .yr{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--gold-deep); letter-spacing:.05em; }
+.edu-card h3{ font-size:18px; margin:8px 0 4px; }
+.edu-card .dept{ font-size:13.5px; color:var(--ink-soft); margin-bottom:12px; }
+.edu-card .gpa{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--purple); }
+
+/* ---------- projects ---------- */
+.proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+.proj-card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:26px; position:relative; display:flex; flex-direction:column; gap:12px;
+  cursor:pointer; transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.proj-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--purple);
+  box-shadow:0 18px 34px -22px rgba(90,20,80,.35);
+}
+.proj-card .badge{
+  position:absolute; top:-11px; right:20px;
+  background:var(--gold); color:var(--purple-deep);
+  font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.04em;
+  padding:5px 10px; border-radius:20px; font-weight:600;
+}
+.proj-card h3{ font-size:17.5px; line-height:1.35; padding-right:20px; }
+.proj-card p{ font-size:13.5px; color:var(--ink); }
+.proj-card .tag-row{ margin-top:auto; padding-top:6px; }
+.detail-btn{
+  align-self:flex-start;
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.03em;
+  background:none; border:none; color:var(--purple); cursor:pointer; padding:0;
+  margin-top:2px; text-decoration:none; border-bottom:1px solid transparent;
+  transition:border-color .15s, color .15s;
+}
+.detail-btn:hover{ border-color:var(--gold); color:var(--gold-deep); }
+.pub-item .pub-btn{ margin-left:auto; flex:0 0 auto; align-self:center; white-space:nowrap; }
+
+/* ---------- publications ---------- */
+.pub-list{ display:flex; flex-direction:column; gap:0; }
+.pub-item{
+  display:flex; align-items:center; gap:16px;
+  padding:18px 0 18px 10px; border-top:1px dashed var(--line);
+}
+.pub-item:first-child{ border-top:none; }
+.pub-item.clickable{ cursor:pointer; transition:background .15s ease; border-radius:6px; }
+.pub-item.clickable:hover{ background:var(--purple-tint); }
+.pub-mark{
+  width:34px; height:34px; border-radius:50%; flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600;
+  background:var(--purple-tint); color:var(--purple);
+}
+.pub-mark.best{ background:var(--gold); color:var(--purple-deep); }
+.pub-body{ flex:1 1 auto; min-width:0; }
+.pub-body .name{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.03em; color:var(--gold-deep); }
+.pub-body .title{ font-size:14.5px; margin-top:3px; }
+.pub-body .loc{ font-size:12px; color:var(--ink-soft); margin-top:3px; }
+
+/* ---------- skills ---------- */
+.skill-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+.skill-cat{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
+.skill-cat h3{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--purple); margin-bottom:14px; }
+.chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{
+  font-size:13px; padding:7px 13px; border-radius:20px; border:1px solid var(--line);
+  background:var(--paper); color:var(--ink);
+}
+
+/* ---------- awards ---------- */
+.award-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.award-card{ text-align:center; padding:22px 14px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); }
+.award-card .ic{ font-size:22px; margin-bottom:10px; }
+.award-card .t{ font-size:13.5px; font-weight:600; margin-bottom:4px; }
+.award-card .y{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); }
+
+/* ---------- contact / footer ---------- */
+.contact-section{
+  background:var(--purple);
+  color:#fff;
+  padding:80px 0 46px;
+  position:relative;
+  overflow:hidden;
+}
+.contact-inner{ position:relative; z-index:1; display:grid; grid-template-columns:1.2fr .8fr; gap:48px; align-items:start; }
+.contact-inner h2{ color:#fff; font-size:clamp(28px,4vw,40px); margin-bottom:16px; }
+.contact-inner p{ color:#E9D9E5; font-size:15px; max-width:440px; margin-bottom:26px; }
+.contact-list{ display:flex; flex-direction:column; gap:14px; margin-bottom:10px; }
+.contact-list a{
+  text-decoration:none; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:14.5px;
+  border-bottom:1px solid rgba(255,255,255,.35); width:fit-content; padding-bottom:3px;
+}
+.contact-list a:hover{ border-color:var(--gold); color:var(--gold); }
+.qr-box{
+  background:#fff; border-radius:var(--radius); padding:22px; color:var(--ink);
+  display:flex; gap:16px; align-items:center;
+}
+#qrcode{ flex:0 0 auto; width:96px; height:96px; }
+.qr-box .cp strong{ display:block; font-size:13px; margin-bottom:4px; color:var(--purple-deep); }
+.qr-box .cp span{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; }
+.footer-note{
+  margin-top:56px; padding-top:20px; border-top:1px solid rgba(255,255,255,.18);
+  display:flex; justify-content:center; flex-wrap:wrap; gap:10px;
+  font-family:'IBM Plex Mono',monospace; font-size:11px; color:#D9C3D4; position:relative; z-index:1;
+}
+
+.toast{
+  position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(12px);
+  background:var(--purple-deep); color:#fff; font-size:12px; padding:11px 18px; border-radius:4px;
+  opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:80;
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ---------- detail modal ---------- */
+.modal-overlay{
+  position:fixed; inset:0; z-index:100;
+  background:rgba(42,15,38,.55);
+  display:none; align-items:flex-start; justify-content:center;
+  padding:64px 20px; overflow-y:auto;
+  backdrop-filter:blur(3px);
+}
+.modal-overlay.open{ display:flex; }
+.modal-panel{
+  background:var(--card); border-radius:var(--radius);
+  max-width:720px; width:100%; position:relative;
+  padding:38px 34px 34px;
+  box-shadow:0 40px 80px -30px rgba(30,10,28,.5);
+  animation:modalIn .18s ease;
+}
+@keyframes modalIn{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
+.modal-close{
+  position:absolute; top:18px; right:18px;
+  width:32px; height:32px; border-radius:50%;
+  border:1px solid var(--line); background:var(--paper); color:var(--ink);
+  font-size:16px; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .15s;
+}
+.modal-close:hover{ background:var(--purple-tint); }
+.modal-tag{
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--gold-deep); text-transform:uppercase; margin-bottom:10px;
+}
+.modal-panel h3{ font-size:22px; line-height:1.3; margin-bottom:4px; padding-right:30px; }
+.modal-sub{ font-family:'Fraunces',serif; font-style:italic; color:var(--ink-soft); font-size:14.5px; margin-bottom:6px; }
+.modal-period{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft); margin-bottom:18px; }
+.modal-body{ font-size:14.5px; color:var(--ink); }
+.modal-body h4{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--purple); margin:20px 0 8px; }
+.modal-body p{ margin-bottom:10px; }
+.modal-imgs{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0; }
+.img-placeholder{
+  aspect-ratio:16/10; border-radius:6px; border:1px solid var(--line);
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 6px, var(--line) 6px, var(--line) 7px),
+    var(--paper-2);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:10.5px; gap:6px;
+  text-align:center; padding:10px;
+}
+.modal-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.modal-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.modal-links a{
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px;
+  color:var(--purple); text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;
+}
+.modal-links a:hover{ border-color:var(--purple); }
+@media (max-width:560px){
+  .modal-imgs{ grid-template-columns:1fr; }
+  .modal-panel{ padding:30px 20px 26px; }
+}
+
+@media (max-width:880px){
+  .hero-inner, .about-grid, .contact-inner{ grid-template-columns:1fr; }
+  .edu-grid, .skill-grid{ grid-template-columns:1fr; }
+  .proj-grid{ grid-template-columns:1fr; }
+  .award-grid{ grid-template-columns:1fr 1fr; }
+  .tl-item{ grid-template-columns:1fr; gap:6px; }
+  .nav-links{ display:none; }
+}
+@media (max-width:520px){
+  .award-grid{ grid-template-columns:1fr; }
+  .hero{ padding-top:120px; }
+  .qr-box{ flex-direction:column; text-align:center; }
+  .lang-toggle span:not(.globe){ display:none; }
+  .lang-toggle{ padding:8px 10px; }
+}
+@media (prefers-reduced-motion: reduce){ * { scroll-behavior:auto !important; transition:none !important; } }
+</style>
+</head>
+<body>
+<!--
+  使用說明：
+  1. 圖片：專案 / 學術發表彈窗內容集中在下方 <script> 區塊的 DETAILS 物件中。
+     之後補圖片時，把對應 images 陣列裡的 {caption:"..."} 換成
+     {caption:"...", src:"images/xxx.jpg"} 即可（腳本會自動改用真實圖片取代虛線佔位框）。
+  2. 文字：DETAILS 物件內每個項目都分 zh / en 兩組內容，記得中英文都要同步更新。
+  3. 語言切換：一般文字改在 I18N 物件裡的 zh / en 對應 key 修改即可，
+     對應的 HTML 元素上會有 data-i18n="key名稱" 屬性可以搜尋比對。
+-->
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-name">林佳妤 <span>Tess</span></div>
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav-about">關於我</a></li>
+      <li><a href="#experience" data-i18n="nav-experience">經歷</a></li>
+      <li><a href="#education" data-i18n="nav-education">學歷</a></li>
+      <li><a href="#projects" data-i18n="nav-projects">專案</a></li>
+      <li><a href="#publications" data-i18n="nav-publications">學術發表</a></li>
+      <li><a href="#skills" data-i18n="nav-skills">技能</a></li>
+      <li><a href="#awards" data-i18n="nav-awards">獎項證書</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language / 切換語言">
+        <span class="globe">🌐</span><span id="langToggleLabel">EN</span>
+      </button>
+      <a class="nav-cta" href="#contact" data-i18n="nav-contact">聯絡我</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <svg id="bg-nodes" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>AI RESEARCH &amp; DEVELOPMENT ENGINEER · NTHU MS</div>
+      <h1 class="hero-name" data-i18n="hero-name">林佳妤<br><em>Tess Lin</em></h1>
+      <div class="hero-en">AI RESEARCH &amp; DEVELOPMENT ENGINEER (INTERN)</div>
+      <p class="hero-role" data-i18n="hero-role">
+        從數位內容設計橫跨學習科技領域，專長為大語言模型應用、RAG 架構開發與人機互動研究
+        現為 <strong>國立清華大學</strong> 應屆碩士生，
+		同時擔任 <strong>仁寶電腦工業股份有限公司</strong> AI 研發實習生
+      </p>
+      <p class="hero-pitch" data-i18n="hero-pitch">"以技術構建專案架構，以設計賦予科技溫度；在跨域的背景，期望用 AI 實踐更多可能"</p>
+      <div class="hero-cta">
+        <a class="btn solid" href="#projects" data-i18n="cta-projects">查看專案 →</a>
+        <a class="btn ghost" href="mailto:iotesslin@gmail.com" data-i18n="cta-email">寄信給我</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="field-row">
+        <div class="field-label">Tel</div>
+        <div class="field-value"><a href="tel:+886988150796">0988-150-796</a></div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Mail</div>
+        <div class="field-value"><a href="mailto:iotesslin@gmail.com">iotesslin@gmail.com</a></div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">Base</div>
+        <div class="field-value">Taiwan</div>
+      </div>
+      <div class="rule"></div>
+      <div class="stat-row">
+        <div class="stat"><div class="num">7+</div><div class="lbl" data-i18n="stat-conf">國際研討會發表</div></div>
+        <div class="stat"><div class="num">4.08</div><div class="lbl" data-i18n="stat-gpa">碩士累計 GPA</div></div>
+        <div class="stat"><div class="num">8+</div><div class="lbl" data-i18n="stat-projects">專案作品數量</div></div>
+        <div class="stat"><div class="num">680</div><div class="lbl" data-i18n="stat-toeic">TOEIC 成績</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="ticket chapter-badge">01</div>
+      <div class="chapter-title">
+        <h2 data-i18n="about-title">關於我</h2>
+        <div class="sub">About</div>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p data-i18n="about-p1">
+          從大學到碩士的六年，我的學術背景從數位內容設計橫跨到學習科技相關領域，這讓我體悟到在研究或研發過程，
+          不僅要從使用者的感性需求出發探討，更要結合理性的數據與技術尋求解決方案。
+        </p>
+        <p class="quote" data-i18n="about-quote">
+          即便在 AI 快速變化的時代，重點核心在於思考技術應用與社會需求之間如何取得平衡。
+        </p>
+        <p data-i18n="about-p2">
+          碩士期間加入區國良教授的「數據計算與機器學習實驗室」，嘗試將 LLM 應用於焦慮感測議題，
+          透過以人為本的策略整合 GAI 模型及量表轉換機制，開發出具備語義焦慮檢測的聊天機器人，
+          本研究榮獲 2026 年度 TWELF 最佳論文獎。
+        </p>
+        <p data-i18n="about-p3">
+          在學術領域外，更進入仁寶電腦擔任 AI 研發實習生，
+		  運用 Python 與 n8n 建立自動化工作協作系統，並將 RAG 架構整合至 AI Agent 中，提升資訊檢索精準度。
+		  在課餘時間更曾擔任 OpenHCI 工作坊技術設計教學幹部、參與新北市青年永續社會設計挑戰賽，對社會永續與跨域協作持續抱持熱忱。
+        </p>
+      </div>
+      <div class="disc-card">
+        <h3 data-i18n="disc-title">D.I.S.C. 行為模式 · C 型貓頭鷹</h3>
+        <div class="disc-bar hi">
+          <div class="top"><span data-i18n="disc-c">C 分析型 · 冷靜、睿智、仔細</span><span>45%</span></div>
+          <div class="track"><div class="fill" style="width:45%"></div></div>
+        </div>
+        <div class="disc-bar">
+          <div class="top"><span data-i18n="disc-d">D 支配型</span><span>25%</span></div>
+          <div class="track"><div class="fill" style="width:25%"></div></div>
+        </div>
+        <div class="disc-bar">
+          <div class="top"><span data-i18n="disc-i">I 影響型</span><span>15%</span></div>
+          <div class="track"><div class="fill" style="width:15%"></div></div>
+        </div>
+        <div class="disc-bar">
+          <div class="top"><span data-i18n="disc-s">S 穩健型</span><span>15%</span></div>
+          <div class="track"><div class="fill" style="width:15%"></div></div>
+        </div>
+        <p class="disc-note" data-i18n="disc-note">思維模式重事實，習慣以說之以理進行決策驅動；能理性面對高壓的環境變化，並透過數據與邏輯導向因應問題。</p>
+        <p class="mbti-note" data-i18n="mbti-note">MBTI - ENTJ (指揮官)：以系統化思考來解構錯綜複雜的問題，有果斷的決策力、執行推進力及全局觀，能將抽象願景轉化為可落實的具體計畫。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="ticket chapter-badge">02</div>
+      <div class="chapter-title">
+        <h2 data-i18n="exp-title">經歷</h2>
+        <div class="sub">Experience</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2025.07 — <span data-i18n="present">至今</span></div>
+        <div>
+          <div class="tl-role" data-i18n="exp1-role">AI 研發工程師實習生</div>
+          <div class="tl-org" data-i18n="exp1-org">仁寶電腦工業股份有限公司（Compal Electronics, Inc.）· 系統網路處理處 軟體開發部</div>
+          <ul>
+            <li data-i18n="exp1-li1">設計並實現跨平台議題同步與 AI 摘要自動化系統，運用 Python 結合 n8n 工作流程工具，大幅提升研發團隊流程效率</li>
+            <li data-i18n="exp1-li2">建置網頁爬蟲管道並串接 FTP 自動分類上傳，將 RAG 框架整合至 AI Agent 中，提升企業內部資訊檢索的準確性與相關性</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">n8n</span><span class="tag">RAG</span>
+            <span class="tag">AI Agents</span><span class="tag" data-i18n="tag-gas">GAS 爬蟲</span><span class="tag">SFTP</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2025.03 — 2025.07</div>
+        <div>
+          <div class="tl-role" data-i18n="exp2-role">籌備幹部 · 技術設計教學</div>
+          <div class="tl-org" data-i18n="exp2-org">OpenHCI'25 人機互動工作坊 《Agency 2049》</div>
+          <ul>
+            <li data-i18n="exp2-li1">負責工作坊核心課程架構設計，規劃涵蓋 Arduino、TouchDesigner、XR、AI 論壇的跨領域選修課程</li>
+            <li data-i18n="exp2-li2">招募並統籌來自各校的技術與設計 TA，建立教材審查機制，協助學員完成期中提案與期末發表</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2023.04 — 2024.06</div>
+        <div>
+          <div class="tl-role" data-i18n="exp3-role">籌備幹部 · 策劃執行總召</div>
+          <div class="tl-org" data-i18n="exp3-org">台灣設計研究院 新一代與青春美展 《Cohension》</div>
+          <ul>
+            <li data-i18n="exp3-li1">帶領 60 多人的團隊統籌兩場大型展覽，涵蓋專案管理、策展規劃與視覺設計等完整流程</li>
+			<li data-i18n="exp3-li2">利用一年半時間成功在南北各為期一周進行展出，吸引上千人潮與媒體觀展</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="ticket chapter-badge">03</div>
+      <div class="chapter-title">
+        <h2 data-i18n="edu-title">學歷</h2>
+        <div class="sub">Education</div>
+      </div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="yr">2024.09 — 2026.06</div>
+        <h3>國立清華大學 National Tsing Hua University</h3>
+        <div class="dept" data-i18n="edu1-dept">學習科學與科技研究所 · 碩士 · 數據運算與機器學習實驗室</div>
+        <div class="gpa">Cumulative GPA 4.08 / 4.3</div>
+      </div>
+      <div class="edu-card">
+        <div class="yr">2020.09 — 2024.06</div>
+        <h3>國立高雄大學 National University of Kaohsiung</h3>
+        <div class="dept" data-i18n="edu2-dept">工藝與創意設計學系 · 學士 · 數位內容類組</div>
+		<div class="gpa">Cumulative GPA 3.90 / 4.0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="ticket chapter-badge">04</div>
+      <div class="chapter-title">
+        <h2 data-i18n="proj-title">專案作品</h2>
+        <div class="sub">Projects</div>
+      </div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card" data-detail="proj-anxiety">
+        <span class="badge" data-i18n="p1-badge">TWELF2026 最佳論文獎</span>
+        <h3 data-i18n="p1-title">LLM 焦慮覺察聊天機器人（碩士論文）</h3>
+        <p data-i18n="p1-desc">整合大語言模型與 Rogers 人本策略（PCS），將 GAD-7、PANAS 量表隱性嵌入自然對話中，於 Discord 平台進行為期一週的真人測試（N=7），驗證系統回應速度與促進自我揭露之成效。</p>
+        <div class="tag-row">
+          <span class="tag">LLM</span><span class="tag">GPT-4o</span><span class="tag">Prompt Engineering</span><span class="tag">SUS / TAM</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-anxiety" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+      <div class="proj-card" data-detail="proj-compal">
+        <h3 data-i18n="p2-title">企業自動化工作流與 RAG AI Agent</h3>
+        <p data-i18n="p2-desc">於仁寶電腦實習期間，建置跨平台議題同步與 AI 摘要系統，並開發整合 RAG 框架的知識檢索 AI Agent，協助公司內部人員的知識獲取及作業運作。</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">n8n</span><span class="tag">RAG</span><span class="tag">GAS</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-compal" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+      <div class="proj-card" data-detail="proj-bigdata">
+        <h3 data-i18n="p3-title">教育大數據之學生數學學習成效分析</h3>
+        <p data-i18n="p3-desc">以「113年教育大數據競賽」開放資料集為基礎，運用 Python 進行大規模資料清洗、R 語言 ggplot 視覺化，並導入 SVM 分類預測與 DBSCAN 聚類分析學生平台使用行為型態。</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">R</span><span class="tag">SVM</span><span class="tag">DBSCAN</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-bigdata" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+      <div class="proj-card" data-detail="proj-vr">
+        <h3 data-i18n="p4-title">CoSpaces 萬聖節英語教學 VR 場景</h3>
+        <p data-i18n="p4-desc">三人團隊合作打造沉浸式虛擬萬聖節世界，負責 3D 場景設計與 Blockly 區塊程式邏輯編排，將萬聖節文化知識轉化為國小低年級適齡數位闖關遊戲。</p>
+        <div class="tag-row">
+          <span class="tag">CoSpaces</span><span class="tag">Blockly</span><span class="tag">VR</span><span class="tag">Gamification</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-vr" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+      <div class="proj-card" data-detail="proj-ux">
+        <h3 data-i18n="p5-title">聲無人境 Echo Alone · UX 虛擬展覽</h3>
+        <p data-i18n="p5-desc">四人團隊期末體驗設計，以「日出至夜」時間動態軸探討數位孤獨現象，負責核心主題發想與敘事影像製作，將 UX 流程圖轉化為具情感共鳴的沉浸體驗。</p>
+        <div class="tag-row">
+          <span class="tag">UX Design</span><span class="tag">Storytelling</span><span class="tag">Video</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-ux" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+	  <div class="proj-card" data-detail="proj-arpillbag">
+        <span class="badge" data-i18n="p6-badge">國科會大專生研究補助計畫</span>
+        <h3 data-i18n="p6-title">AR 智慧環保回收藥袋設計（學士專題）</h3>
+        <p data-i18n="p6-desc">以擴增實境與應用系統結合環保回收藥袋，探索智慧用藥提醒、紀錄與包裝改善的應用潛力。</p>
+        <div class="tag-row">
+          <span class="tag">AR</span><span class="tag">APP</span><span class="tag">Pillbag</span><span class="tag">Smart Sensing</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-arpillbag" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+	  <div class="proj-card" data-detail="proj-cultural-vr">
+        <span class="badge" data-i18n="p7-badge">產學合作研究專案</span>
+        <h3 data-i18n="p7-title">遊戲式 VR 導覽教材開發（產學合作）</h3>
+        <p data-i18n="p7-desc">以遊戲式虛擬實境導覽教材輔助當地小學生文化課程學習，探討沉浸式互動教材對教育成效的支持。</p>
+        <div class="tag-row">
+          <span class="tag">Gamified VR</span><span class="tag">Educational Outcomes</span><span class="tag">Teaching Materials</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-cultural-vr" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+      <div class="proj-card" data-detail="proj-gcp">
+        <h3 data-i18n="p8-title">Google Cloud 生成式 AI 開發者實務探索</h3>
+        <p data-i18n="p8-desc">自主學習雲端基礎架構與 Vertex AI 平台，實作 Prompt 設計與 Gemini 1.0 Pro 應用程式整合技術，補足雲端部署層面的技術缺口。</p>
+        <div class="tag-row">
+          <span class="tag">Vertex AI</span><span class="tag">Gemini</span><span class="tag">Responsible AI</span>
+        </div>
+        <button class="detail-btn" data-detail="proj-gcp" data-i18n="detail-btn-project">查看詳情 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="publications">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="ticket chapter-badge">05</div>
+      <div class="chapter-title">
+        <h2 data-i18n="pub-title">學術發表</h2>
+        <div class="sub" data-i18n="pub-sub">Publications · 第一作者</div>
+      </div>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item clickable" data-detail="pub-twelf">
+        <div class="pub-mark best">★</div>
+        <div class="pub-body">
+          <div class="name" data-i18n="pub1-name">TWELF 2026 · 最佳論文獎</div>
+          <div class="title" data-i18n="pub1-title">整合大語言模型與人本策略建構語意分析聊天機器人：探討生成式人工智慧於大學生焦慮覺察之應用發展</div>
+          <div class="loc" data-i18n="pub1-loc">台灣數位學習發展研討會 · 南投, 台灣 · 2026.03</div>
+        </div>
+        <button class="detail-btn pub-btn" data-detail="pub-twelf" data-i18n="detail-btn-pub">查看摘要 →</button>
+      </div>
+      <div class="pub-item clickable" data-detail="pub-iciet">
+        <div class="pub-mark">AI</div>
+        <div class="pub-body">
+          <div class="name" data-i18n="pub2-name">ICIET 2026 · 口頭發表</div>
+          <div class="title" data-i18n="pub2-title">An LLM-Based AI Chatbot Integrating Psychometric and People-Centered Strategies for Anxiety Detection in Educational Settings</div>
+          <div class="loc" data-i18n="pub2-loc">資訊與教育科技國際會議 · 東京大學, 福島, 日本 · 2026.04</div>
+        </div>
+        <button class="detail-btn pub-btn" data-detail="pub-iciet" data-i18n="detail-btn-pub">查看摘要 →</button>
+      </div>
+      <div class="pub-item clickable" data-detail="pub-iciai">
+        <div class="pub-mark">AI</div>
+        <div class="pub-body">
+          <div class="name" data-i18n="pub3-name">ICIAI 2026 · 口頭發表</div>
+          <div class="title" data-i18n="pub3-title">An LLM-Driven Chatbot for Semantic Anxiety Detection Using Embedded Scales and Person-Centred Strategies</div>
+          <div class="loc" data-i18n="pub3-loc">人工智慧創新國際會議 · 早稻田大學, 東京, 日本 · 2026.04</div>
+        </div>
+        <button class="detail-btn pub-btn" data-detail="pub-iciai" data-i18n="detail-btn-pub">查看摘要 →</button>
+      </div>
+      <div class="pub-item clickable" data-detail="pub-isasd">
+        <div class="pub-mark">AR</div>
+        <div class="pub-body">
+          <div class="name" data-i18n="pub4-name">ISASD 2024 · 口頭發表</div>
+          <div class="title" data-i18n="pub4-title">Research Survey on Mutual Assistance of Medical Packaging Improvement and Innovative AR Application Systems</div>
+          <div class="loc" data-i18n="pub4-loc">智慧科學與永續發展論壇 · 東京工業大學, 東京, 日本 · 2024.07</div>
+        </div>
+        <button class="detail-btn pub-btn" data-detail="pub-isasd" data-i18n="detail-btn-pub">查看摘要 →</button>
+      </div>
+      <div class="pub-item clickable" data-detail="pub-ssim">
+        <div class="pub-mark">AR</div>
+        <div class="pub-body">
+          <div class="name" data-i18n="pub5-name">IEEE SSIM 2023 · 口頭發表</div>
+          <div class="title" data-i18n="pub5-title">探討以擴增實境輔助環保回收智慧感測藥盒之應用潛力</div>
+          <div class="loc" data-i18n="pub5-loc">社會科學與智慧管理論壇 · 朝陽科技大學, 台中, 台灣 · 2023.12</div>
+        </div>
+        <button class="detail-btn pub-btn" data-detail="pub-ssim" data-i18n="detail-btn-pub">查看摘要 →</button>
+      </div>
+	  <div class="pub-item clickable" data-detail="pub-metaaces">
+        <div class="pub-mark">VR</div>
+        <div class="pub-body">
+          <div class="name" data-i18n="pub6-name">MetaACES 2023 · 口頭發表</div>
+          <div class="title" data-i18n="pub6-title">Research on the Education of Primary School Students with Game-Style Virtual Reality Guide Materials Assisting Cultural Courses</div>
+          <div class="loc" data-i18n="pub6-loc">教育元宇宙與人工智慧論壇 · 香港教育大學, 香港, 中國 · 2023.06</div>
+        </div>
+        <button class="detail-btn pub-btn" data-detail="pub-metaaces" data-i18n="detail-btn-pub">查看摘要 →</button>
+      </div>
+	  <div class="pub-item clickable" data-detail="pub-gccce">
+        <div class="pub-mark">VR</div>
+        <div class="pub-body">
+          <div class="name" data-i18n="pub7-name">GCCCE 2023 · 口頭發表</div>
+          <div class="title" data-i18n="pub7-title">遊戲式虛擬實境導覽教材輔助小學生文化課程教育之研究</div>
+          <div class="loc" data-i18n="pub7-loc">全球華人計算機教育大會 · 北京師範大學, 北京, 中國 · 2023.05</div>
+        </div>
+        <button class="detail-btn pub-btn" data-detail="pub-gccce" data-i18n="detail-btn-pub">查看摘要 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="ticket chapter-badge">06</div>
+      <div class="chapter-title">
+        <h2 data-i18n="skills-title">技能專長</h2>
+        <div class="sub">Skills</div>
+      </div>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <h3 data-i18n="skill-cat1">AI 與機器學習應用</h3>
+        <div class="chip-row">
+          <span class="chip">Large Language Models</span><span class="chip" data-i18n="chip-rag">RAG 架構整合</span>
+          <span class="chip">Prompt Engineering</span><span class="chip" data-i18n="chip-agents">AI Agents 開發</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3 data-i18n="skill-cat2">數據分析與自動化</h3>
+        <div class="chip-row">
+          <span class="chip" data-i18n="chip-py-clean">Python 數據清洗</span><span class="chip" data-i18n="chip-spss">SPSS 統計分析</span>
+          <span class="chip" data-i18n="chip-n8n">n8n 工作流自動化</span><span class="chip" data-i18n="chip-gas">GAS 網頁爬蟲</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3 data-i18n="skill-cat3">人機互動與使用者研究</h3>
+        <div class="chip-row">
+          <span class="chip" data-i18n="chip-persona">Persona 分析</span><span class="chip">User Journey Map</span>
+          <span class="chip" data-i18n="chip-hci">HCI 設計思維</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3 data-i18n="skill-cat4">數位內容與原型設計</h3>
+        <div class="chip-row">
+          <span class="chip">Figma</span><span class="chip" data-i18n="chip-adobe">Adobe 系列軟體</span>
+          <span class="chip" data-i18n="chip-pm">專案管理</span><span class="chip" data-i18n="chip-collab">跨領域協作</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="awards">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="ticket chapter-badge">07</div>
+      <div class="chapter-title">
+        <h2 data-i18n="awards-title">獎項與證書</h2>
+        <div class="sub">Awards &amp; Certificates</div>
+      </div>
+    </div>
+    <div class="award-grid">
+      <div class="award-card">
+        <div class="ic">🏆</div>
+        <div class="t" data-i18n="award1-t">新北市青年永續社會設計挑戰賽</div>
+        <div class="y" data-i18n="award1-y">第三名 · 2025</div>
+      </div>
+      <div class="award-card">
+        <div class="ic">🥽</div>
+        <div class="t" data-i18n="award2-t">智慧感知網路創新應用競賽</div>
+        <div class="y" data-i18n="award2-y">元宇宙 AVR 決賽入圍 · 2022</div>
+      </div>
+      <div class="award-card">
+        <div class="ic">☁️</div>
+        <div class="t" data-i18n="award3-t">Google Cloud 結業證書</div>
+        <div class="y" data-i18n="award3-y">雲端運算與生成式 AI · 2025</div>
+      </div>
+      <div class="award-card">
+        <div class="ic">🗣️</div>
+        <div class="t" data-i18n="award4-t">TOEIC 英文檢定</div>
+        <div class="y" data-i18n="award4-y">聽力與閱讀 680 分 · 2023</div>
+      </div>
+      <div class="award-card">
+        <div class="ic">🎨</div>
+        <div class="t" data-i18n="award5-t">TQC 專業設計人才證書</div>
+        <div class="y" data-i18n="award5-y">電腦圖像編輯與製作 · 2021</div>
+      </div>
+      <div class="award-card">
+        <div class="ic">🎓</div>
+        <div class="t" data-i18n="award6-t">碩士累計 GPA</div>
+        <div class="y">4.08 / 4.3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <svg id="bg-nodes-2" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;z-index:0;opacity:.25;pointer-events:none;"></svg>
+  <div class="wrap contact-inner">
+    <div>
+      <div class="eyebrow" style="color:#E9D9E5;"><span class="dot" style="box-shadow:0 0 0 3px rgba(255,255,255,.2);"></span>GET IN TOUCH</div>
+      <h2 data-i18n="contact-title">期待與您聊聊合作機會</h2>
+      <p data-i18n="contact-desc">目前正在尋找 AI 研發 / 資料科學 / 人機互動相關的正職機會，歡迎與我聯繫，或掃描右側 QR Code 直接加入聯絡人。</p>
+      <div class="contact-list">
+        <a href="tel:+886988150796">📞 0988-150-796</a>
+        <a href="mailto:iotesslin@gmail.com">✉️ iotesslin@gmail.com</a>
+      </div>
+      <a class="btn" href="#" id="downloadVcf" data-i18n="cta-vcf" style="background:var(--gold); color:var(--purple-deep); border-color:var(--gold); margin-top:10px;">下載電子名片 .vcf</a>
+    </div>
+    <div class="qr-box">
+      <div id="qrcode"></div>
+      <div class="cp">
+        <strong data-i18n="qr-strong">掃描加入聯絡人</strong>
+        <span data-i18n="qr-desc">開啟相機掃描 QR Code，即可直接將林佳妤的聯絡資訊加入您的手機通訊錄。</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-note">
+    <span>© 2026 · Jia-Yu Lin</span>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel" id="modalPanel">
+    <button class="modal-close" id="modalClose" aria-label="關閉">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ---------------------------------------------------------------
+  // 語言切換系統 / Language toggle system
+  // ---------------------------------------------------------------
+  const I18N = {
+    zh: {
+      "nav-about":"關於我", "nav-experience":"經歷", "nav-education":"學歷",
+      "nav-projects":"專案", "nav-publications":"學術發表", "nav-skills":"技能",
+      "nav-awards":"獎項證書", "nav-contact":"聯絡我",
+      "hero-name":'林佳妤<br><em>Tess Lin</em>',
+      "hero-role":'從數位內容設計橫跨學習科技領域，專長為大語言模型應用、RAG 架構開發與人機互動研究。現為 <strong>國立清華大學</strong> 應屆碩士生，同時擔任 <strong>仁寶電腦工業股份有限公司</strong> AI 研發實習生',
+      "hero-pitch":'"以技術構建專案架構，以設計賦予科技溫度；在跨域的背景，期望用 AI 實踐更多可能"',
+      "cta-projects":"查看專案 →", "cta-email":"寄信給我",
+      "stat-conf":"國際研討會發表", "stat-gpa":"碩士累計 GPA", "stat-projects":"專案作品數量", "stat-toeic":"TOEIC 成績",
+      "about-title":"關於我",
+      "about-p1":"從大學到碩士的六年，我的學術背景從數位內容設計橫跨到學習科技相關領域，這讓我體悟到在研究或研發過程，不僅要從使用者的感性需求出發探討，更要結合理性的數據與技術尋求解決方案。",
+      "about-quote":"即便在 AI 快速變化的時代，重點核心仍在於思考技術應用與社會需求之間如何取得平衡。",
+      "about-p2":"碩士期間加入區國良教授的「數據計算與機器學習實驗室」，嘗試將 LLM 應用於焦慮感測議題，透過以人為本的策略整合 GAI 模型及量表轉換機制，開發出具備語義焦慮檢測的聊天機器人，研究榮獲 2026 年度 TWELF 最佳論文獎。同時進入仁寶電腦擔任 AI 研發實習生，運用 Python 與 n8n 建立自動化工作協作系統，並將 RAG 架構整合至 AI Agent 中，提升資訊檢索精準度。",
+      "about-p3":"在專業領域外，我對社會永續與跨域協作持續抱持熱忱，曾擔任 OpenHCI 工作坊教學部幹部，也參與新北市青年永續社會設計挑戰賽並獲得第三名。",
+      "disc-title":"D.I.S.C. 行為模式 · C 型貓頭鷹",
+      "disc-c":"C 分析型 · 冷靜、睿智、仔細", "disc-d":"D 支配型", "disc-i":"I 影響型", "disc-s":"S 穩健型",
+      "disc-note":"思維模式重事實，習慣以說之以理進行決策驅動；能理性面對高壓的環境變化，並透過數據與邏輯導向因應問題。",
+	  "mbti-note":"MBTI - ENTJ (指揮官)：以系統化思考來解構錯綜複雜的問題，有果斷的決策力、執行推進力及全局觀，能將抽象願景轉化為可落實的具體計畫。",
+      "exp-title":"經歷", "present":"至今",
+      "exp1-role":"AI 研發工程師實習生",
+      "exp1-org":"仁寶電腦工業股份有限公司（Compal Electronics, Inc.）· 系統網路處理處 軟體開發部",
+      "exp1-li1":"設計並實現跨平台議題同步與 AI 摘要自動化系統，運用 Python 結合 n8n 工作流程工具，大幅提升研發團隊流程效率",
+      "exp1-li2":"建置網頁爬蟲管道並串接 FTP 自動分類上傳，將 RAG 框架整合至 AI Agent 中，提升企業內部資訊檢索的準確性與相關性",
+      "tag-gas":"GAS 爬蟲",
+      "exp2-role":"籌備幹部 · 教學部（技術設計）",
+      "exp2-org":"OpenHCI'25 人機互動工作坊 —《Agency 2049》",
+      "exp2-li1":"負責工作坊核心課程架構設計，規劃涵蓋 Arduino、TouchDesigner、XR、AI 論壇的跨領域選修課程",
+      "exp2-li2":"招募並統籌來自各校的技術與設計 TA，建立教材審查機制，協助學員完成期中提案與期末發表",
+      "exp3-role":"策劃總召", "exp3-org":"台灣設計研究院 新一代與青春美展",
+      "exp3-li1":"統籌大型展覽之專案管理與策展設計規劃",
+      "exp3-li2":"利用一年半時間成功在南北各為期一周進行展出，吸引上千人潮與媒體觀展",
+      "edu-title":"學歷",
+      "edu1-dept":"學習科學與科技研究所 碩士生 · 數據運算與機器學習實驗室",
+      "edu2-dept":"工藝與創意設計學系 數位內容組 · 學士",
+      "edu2-focus":"數位內容設計研究",
+      "proj-title":"專案作品",
+      "p1-badge":"TWELF2026 最佳論文獎", "p1-title":"LLM 焦慮覺察聊天機器人（碩士論文）",
+      "p1-desc":"整合大語言模型與 Rogers 人本策略（PCS），將 GAD-7、PANAS 量表隱性嵌入自然對話中，於 Discord 平台進行為期一週的真人測試（N=7），驗證系統回應速度與促進自我揭露之成效。",
+      "p2-title":"企業自動化工作流與 RAG AI Agent",
+      "p2-desc":"於仁寶電腦實習期間，建置跨平台議題同步與 AI 摘要系統，並開發整合 RAG 框架的知識檢索 AI Agent，協助公司內部人員的知識獲取及作業運作。",
+      "p3-title":"教育大數據之學生數學學習成效分析",
+      "p3-desc":"以「113年教育大數據競賽」開放資料集為基礎，運用 Python 進行大規模資料清洗、R 語言 ggplot 視覺化，並導入 SVM 分類預測與 DBSCAN 聚類分析學生平台使用行為型態。",
+      "p4-title":"CoSpaces 萬聖節英語教學 VR 場景",
+      "p4-desc":"三人團隊合作打造沉浸式虛擬萬聖節世界，負責 3D 場景設計與 Blockly 區塊程式邏輯編排，將萬聖節文化知識轉化為國小低年級適齡數位闖關遊戲。",
+      "p5-title":"聲無人境 Echo Alone · UX 虛擬展覽",
+      "p5-desc":"四人團隊期末體驗設計，以「日出至夜」時間動態軸探討數位孤獨現象，負責核心主題發想與敘事影像製作，將 UX 流程圖轉化為具情感共鳴的沉浸體驗。",
+      "p6-badge":"國科會大專生研究補助計畫",
+      "p6-title":"AR 智慧環保回收藥袋設計（學士專題）",
+      "p6-desc":"以擴增實境與應用系統結合環保回收藥袋，探索智慧用藥提醒、紀錄與包裝改善的應用潛力。",
+      "p7-badge":"產學合作研究專案",
+      "p7-title":"遊戲式 VR 導覽教材開發（產學合作）",
+      "p7-desc":"以遊戲式虛擬實境導覽教材輔助當地小學生文化課程學習，探討沉浸式互動教材對教育成效的支持。",
+      "p8-title":"Google Cloud 生成式 AI 開發者實務探索",
+      "p8-desc":"自主學習雲端基礎架構與 Vertex AI 平台，實作 Prompt 設計與 Gemini 1.0 Pro 應用程式整合技術，補足雲端部署層面的技術缺口。",
+      "detail-btn-project":"查看詳情 →", "detail-btn-pub":"查看摘要 →",
+      "pub-title":"學術發表", "pub-sub":"Publications · 第一作者",
+      "pub1-name":"TWELF 2026 · 最佳論文獎",
+      "pub1-title":"整合大語言模型與人本策略建構語意分析聊天機器人：探討生成式人工智慧於大學生焦慮覺察之應用發展",
+      "pub1-loc":"第二十一屆台灣數位學習發展研討會 · 南投，2026.03",
+      "pub2-name":"ICIET 2026 · 口頭發表",
+      "pub2-title":"An LLM-Based AI Chatbot Integrating Psychometric and People-Centered Strategies for Anxiety Detection in Educational Settings",
+      "pub2-loc":"資訊與教育科技國際會議 · 東京大學，福島，日本 · 2026.04",
+      "pub3-name":"ICIAI 2026 · 口頭發表",
+      "pub3-title":"An LLM-Driven Chatbot for Semantic Anxiety Detection Using Embedded Scales and Person-Centred Strategies",
+      "pub3-loc":"人工智慧創新國際會議 · 早稻田大學，東京，日本 · 2026.04",
+      "pub4-name":"ISASD 2024 · 口頭發表",
+      "pub4-title":"Research Survey on Mutual Assistance of Medical Packaging Improvement and Innovative AR Application Systems",
+      "pub4-loc":"智慧科學與永續發展論壇 · 東京工業大學，東京，日本 · 2024.07",
+      "pub5-name":"IEEE SSIM 2023 · 口頭發表",
+      "pub5-title":"探討以擴增實境輔助環保回收智慧感測藥盒之應用潛力",
+      "pub5-loc":"社會科學與智慧管理論壇 · 朝陽科技大學，台中，台灣 · 2023.12",
+      "pub6-name":"MetaACES 2023 · 口頭發表",
+      "pub6-title":"Research on the Education of Primary School Students with Game-Style Virtual Reality Guide Materials Assisting Cultural Courses",
+      "pub6-loc":"教育元宇宙與人工智慧論壇 · 香港教育大學，香港，中國 · 2023.06",
+      "pub7-name":"GCCCE 2023 · 口頭發表",
+      "pub7-title":"遊戲式虛擬實境導覽教材輔助小學生文化課程教育之研究",
+      "pub7-loc":"全球華人計算機教育大會 · 北京師範大學，北京，中國 · 2023.05",
+      "skills-title":"技能專長",
+      "skill-cat1":"AI 與機器學習應用", "skill-cat2":"數據分析與自動化",
+      "skill-cat3":"人機互動與使用者研究", "skill-cat4":"數位內容與原型設計",
+      "chip-rag":"RAG 架構整合", "chip-agents":"AI Agents 開發",
+      "chip-py-clean":"Python 數據清洗", "chip-spss":"SPSS 統計分析",
+      "chip-n8n":"n8n 工作流自動化", "chip-gas":"GAS 網頁爬蟲",
+      "chip-persona":"Persona 分析", "chip-hci":"HCI 設計思維",
+      "chip-adobe":"Adobe 系列軟體", "chip-pm":"專案管理", "chip-collab":"跨領域協作",
+      "awards-title":"獎項與證書",
+      "award1-t":"新北市青年永續社會設計挑戰賽", "award1-y":"第三名 · 2025",
+      "award2-t":"智慧感知網路創新應用競賽", "award2-y":"元宇宙 AVR 決賽入圍 · 2022",
+      "award3-t":"Google Cloud 結業證書", "award3-y":"雲端運算與生成式 AI · 2025",
+      "award4-t":"TOEIC 英文檢定", "award4-y":"聽力與閱讀 680 分 · 2023",
+      "award5-t":"TQC 專業設計人才證書", "award5-y":"電腦圖像編輯與製作 · 2021",
+      "award6-t":"碩士累計 GPA",
+      "contact-title":"期待與您聊聊合作機會",
+      "contact-desc":"目前正在尋找 AI 研發 / 資料科學 / 人機互動相關的正職機會，歡迎與我聯繫，或掃描右側 QR Code 直接加入聯絡人。",
+      "cta-vcf":"下載電子名片 .vcf",
+      "qr-strong":"掃描加入聯絡人",
+      "qr-desc":"開啟相機掃描 QR Code，即可直接將林佳妤的聯絡資訊加入您的手機通訊錄。",
+      "toast-vcf":"已下載電子名片"
+    },
+    en: {
+      "nav-about":"About", "nav-experience":"Experience", "nav-education":"Education",
+      "nav-projects":"Projects", "nav-publications":"Publications", "nav-skills":"Skills",
+      "nav-awards":"Awards", "nav-contact":"Contact",
+      "hero-name":'Tess<br><em>Lin</em>',
+      "hero-role":'With expertise spanning digital content design and learning technology, specializing in large language model applications, RAG architecture development, and human-computer interaction research. Currently a graduating master student at <strong>National Tsing Hua University</strong> and an AI R&D intern at <strong>Compal Electronics Inc.</strong>',
+      "hero-pitch":'"We build project architecture with technology and imbue technology with warmth through design; in a cross-domain context, we hope to realize more possibilities with AI."',
+      "cta-projects":"View Projects →", "cta-email":"Email Me",
+      "stat-conf":"Int'l Conference Papers", "stat-gpa":"Cumulative GPA (MS)", "stat-projects":"Featured Projects", "stat-toeic":"TOEIC Score",
+      "about-title":"About Me",
+      "about-p1":"Across six years from undergraduate to graduate study, my academic background has spanned digital content design and learning technology. This taught me that research and development must start from users' emotional needs while grounding solutions in rigorous data and technology.",
+      "about-quote":"Even in an era of rapid AI change, the core question remains how to balance technological application with real social needs.",
+      "about-p2":'During my master\'s program, I joined Professor Kuo-Liang Ou\'s Data Computing and Machine Learning Lab, applying LLMs to anxiety detection. By integrating generative AI with a person-centered strategy and scale-translation mechanism, I built a chatbot capable of semantic anxiety detection — research that won the 2026 TWELF Best Paper Award. I also work as an AI R&amp;D Intern at Compal Electronics, building automated workflow systems with Python and n8n, and integrating RAG architecture into AI Agents to improve information retrieval accuracy.',
+      "about-p3":"Beyond my technical work, I care deeply about social sustainability and cross-disciplinary collaboration — serving on the organizing team for the OpenHCI workshop, and placing 3rd in the New Taipei City Youth Sustainable Social Design Challenge.",
+      "disc-title":'D.I.S.C. Behavior Style · Type "C" Owl',
+      "disc-c":"C · Analytical (Calm, Insightful, Meticulous)", "disc-d":"D · Dominance", "disc-i":"I · Influence", "disc-s":"S · Steadiness",
+      "disc-note":"Fact-driven thinking that favors logical reasoning in decision-making; stays composed under pressure and approaches challenges through data and logic.",
+	  "mbti-note":"MBTI - ENTJ (Commander): Uses systematic thinking to deconstruct complex problems, has decisive decision-making ability, execution drive and a global perspective, and can transform abstract visions into concrete and actionable plans.",
+      "exp-title":"Experience", "present":"Present",
+      "exp1-role":"AI Research &amp; Development Engineer (Intern)",
+      "exp1-org":"Compal Electronics, Inc. · Software Development Dept., System &amp; Network Operations",
+      "exp1-li1":"Designed and implemented a cross-platform issue-sync and AI summarization automation system using Python and n8n, significantly improving R&amp;D team workflow efficiency",
+      "exp1-li2":"Built web crawling pipelines with automated FTP classification and upload, integrating a RAG framework into AI Agents to improve accuracy and relevance of internal information retrieval",
+      "tag-gas":"GAS Crawler",
+      "exp2-role":"Organizing Committee · Curriculum &amp; Technical Design",
+      "exp2-org":'OpenHCI\'25 Human-Computer Interaction Workshop — "Agency 2049"',
+      "exp2-li1":"Designed the workshop's core curriculum structure, planning cross-disciplinary elective courses covering Arduino, TouchDesigner, XR, and AI panels",
+      "exp2-li2":"Recruited and coordinated technical and design TAs from partner universities, established a teaching-material review process, and supported participants through mid-term proposals and final presentations",
+      "exp3-role":"Planning Director", "exp3-org":"Taiwan Design Institute · Young Designers' Exhibition",
+      "exp3-li1":"Led project management and curatorial design planning for a national-scale exhibition",
+      "exp3-li2":"Coordinated week-long exhibitions in both northern and southern Taiwan over one and a half years, attracting thousands of visitors and media attention",
+      "edu-title":"Education",
+      "edu1-dept":"MS, Institute of Learning Sciences and Technologies · Data Computing and Machine Learning Lab",
+      "edu2-dept":"BFA, Department of Crafts and Creative Design · Digital Content Design",
+      "edu2-focus":"Digital Content Design Research",
+      "proj-title":"Projects",
+      "p1-badge":"TWELF2026 Best Paper Award", "p1-title":"LLM-Based Anxiety Awareness Chatbot (Master's Thesis)",
+      "p1-desc":"Integrates large language models with Rogers' Person-Centered Strategy (PCS), embedding GAD-7 and PANAS scales implicitly into natural conversation. Validated through a one-week user study (N=7) on Discord, measuring response speed and effect on self-disclosure.",
+      "p2-title":"Enterprise Automation Workflow &amp; RAG AI Agent",
+      "p2-desc":"During my internship at Compal Electronics, built a cross-platform issue-sync and AI summarization system, and developed a RAG-integrated knowledge-retrieval AI Agent to support internal knowledge access and daily operations.",
+      "p3-title":"Educational Big Data Analysis of Student Math Learning Outcomes",
+      "p3-desc":"Based on the open dataset from the 2024 Educational Big Data Competition, performed large-scale data cleaning with Python, visualized findings with R's ggplot, and applied SVM classification and DBSCAN clustering to analyze student platform usage patterns.",
+      "p4-title":"CoSpaces Halloween VR Scene for English Learning",
+      "p4-desc":"Collaborated in a three-person team to build an immersive virtual Halloween world, responsible for 3D scene design and Blockly-based interaction logic, turning cultural knowledge into an age-appropriate digital quest game for young learners.",
+      "p5-title":'"Echo Alone" · A UX Virtual Exhibition',
+      "p5-desc":'A four-person team\'s final experience-design project exploring digital loneliness through a "sunrise-to-night" timeline. Led the core concept and narrative video production, translating a UX flow into an emotionally resonant immersive experience.',
+      "p6-badge":"MOST Undergraduate Research Grant",
+      "p6-title":"AR Smart Eco-Friendly Recyclable Pill Bag Design",
+      "p6-desc":"Combined augmented reality and application-system design with recyclable medical packaging to explore smart medication reminders, usage records, and packaging-improvement potential.",
+      "p7-badge":"Industry-Academia Research Project",
+      "p7-title":"Gamified VR Guide Learning Materials",
+      "p7-desc":"Developed gamified virtual-reality guide materials for elementary students' cultural courses, examining how immersive interaction can support learning outcomes.",
+      "p8-title":"Google Cloud Generative AI Developer Practicum",
+      "p8-desc":"Self-directed study of cloud infrastructure and the Vertex AI platform, practicing prompt design and Gemini 1.0 Pro application integration to close the gap in cloud-deployment expertise.",
+      "detail-btn-project":"View Details →", "detail-btn-pub":"View Abstract →",
+      "pub-title":"Publications", "pub-sub":"Publications · First Author",
+      "pub1-name":"TWELF 2026 · Best Paper Award",
+      "pub1-title":"A Semantic Analysis Chatbot Integrating LLMs and PCS: GAI Application for Anxiety Awareness in College Students",
+      "pub1-loc":"21st Taiwan E-Learning Forum · Nantou, Taiwan · Mar 2026",
+      "pub2-name":"ICIET 2026 · Oral Presentation",
+      "pub2-title":"An LLM-Based AI Chatbot Integrating Psychometric and People-Centered Strategies for Anxiety Detection in Educational Settings",
+      "pub2-loc":"International Conference on Information and Education Technology · The University of Tokyo, Fukushima, Japan · Apr 2026",
+      "pub3-name":"ICIAI 2026 · Oral Presentation",
+      "pub3-title":"An LLM-Driven Chatbot for Semantic Anxiety Detection Using Embedded Scales and Person-Centred Strategies",
+      "pub3-loc":"International Conference on Innovation in Artificial Intelligence · Waseda University, Tokyo, Japan · Apr 2026",
+      "pub4-name":"ISASD 2024 · Oral Presentation",
+      "pub4-title":"Research Survey on Mutual Assistance of Medical Packaging Improvement and Innovative AR Application Systems",
+      "pub4-loc":"International Symposium on Smart Science and Sustainable Development · Tokyo Institute of Technology, Tokyo, Japan · Jul 2024",
+      "pub5-name":"IEEE SSIM 2023 · Oral Presentation",
+      "pub5-title":"Application Potential of Augmented Reality in Supporting Eco-Friendly Recyclable Smart Sensing Pill Boxes",
+      "pub5-loc":"Social Sciences and Intelligence Management Forum · Chaoyang University of Technology, Taichung, Taiwan · Dec 2023",
+      "pub6-name":"MetaACES 2023 · Oral Presentation",
+      "pub6-title":"Research on the Education of Primary School Students with Game-Style Virtual Reality Guide Materials Assisting Cultural Courses",
+      "pub6-loc":"Metaverse and Artificial Companions in Education and Society Forum · Education University of Hong Kong, Hong Kong, China · Jun 2023",
+      "pub7-name":"GCCCE 2023 · Oral Presentation",
+      "pub7-title":"Gamified Virtual-Reality Guide Materials for Supporting Elementary Students' Cultural-Course Learning",
+      "pub7-loc":"Global Chinese Conference on Computers in Education · Beijing Normal University, Beijing, China · May 2023",
+      "skills-title":"Skills",
+      "skill-cat1":"AI &amp; Machine Learning", "skill-cat2":"Data Analysis &amp; Automation",
+      "skill-cat3":"HCI &amp; User Research", "skill-cat4":"Digital Content &amp; Prototyping",
+      "chip-rag":"RAG Integration", "chip-agents":"AI Agent Development",
+      "chip-py-clean":"Python Data Cleaning", "chip-spss":"SPSS Statistical Analysis",
+      "chip-n8n":"n8n Workflow Automation", "chip-gas":"GAS Web Crawler",
+      "chip-persona":"Persona Analysis", "chip-hci":"HCI Design Thinking",
+      "chip-adobe":"Adobe Creative Suite", "chip-pm":"Project Management", "chip-collab":"Cross-disciplinary Collaboration",
+      "awards-title":"Awards &amp; Certificates",
+      "award1-t":"New Taipei City Youth Sustainable Social Design Challenge", "award1-y":"3rd Place · 2025",
+      "award2-t":"Smart Sensing Internet Innovation Competition", "award2-y":"Metaverse AVR Finalist · 2022",
+      "award3-t":"Google Cloud Certificate of Completion", "award3-y":"Cloud Computing &amp; Generative AI · 2025",
+      "award4-t":"TOEIC English Test", "award4-y":"Listening &amp; Reading Score 680 · 2023",
+      "award5-t":"TQC Professional Design Certificate", "award5-y":"Computer Graphic Editing &amp; Production · 2021",
+      "award6-t":"Cumulative GPA (MS)",
+      "contact-title":"Let's Talk Opportunities",
+      "contact-desc":"Currently looking for full-time opportunities in AI R&amp;D, Data Science, or HCI. Feel free to reach out, or scan the QR code to save my contact directly.",
+      "cta-vcf":"Download vCard (.vcf)",
+      "qr-strong":"Scan to Save Contact",
+      "qr-desc":"Open your camera to scan the QR code and save my contact information directly to your phone.",
+      "toast-vcf":"vCard downloaded"
+    }
+  };
+
+  let currentLang = localStorage.getItem("site-lang") || "zh";
+
+  function applyLang(lang){
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if(I18N[lang] && I18N[lang][key] !== undefined){
+        el.innerHTML = I18N[lang][key];
+      }
+    });
+    document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+    document.getElementById("langToggleLabel").textContent = lang === "zh" ? "EN" : "中文";
+    document.getElementById("langToggle").setAttribute("aria-label", lang === "zh" ? "Switch to English" : "切換為中文");
+    localStorage.setItem("site-lang", lang);
+    currentLang = lang;
+  }
+
+  document.getElementById("langToggle").addEventListener("click", () => {
+    applyLang(currentLang === "zh" ? "en" : "zh");
+  });
+
+  // Apply saved/default language immediately — don't wait until the end of
+  // the script, so a later failure (e.g. a blocked CDN) can't leave the
+  // page in an untranslated or half-initialized state.
+  applyLang(currentLang);
+
+  // ---------------------------------------------------------------
+  // 專案 / 學術發表 詳情內容（雙語）
+  // 之後補圖片：在對應 images 陣列裡加上 src 屬性，例如
+  //   { caption:"系統架構圖", src:"images/anxiety-system.jpg" }
+  // 之後補文字：分別編輯 zh / en 版本的 body 陣列即可
+  // ---------------------------------------------------------------
+  const DETAILS = {
+    "proj-anxiety": {
+      zh: {
+        tag: "碩士論文 · TWELF2026 最佳論文獎",
+        title: "LLM 焦慮覺察聊天機器人",
+        sub: "基於生成式人工智慧與人本策略建構焦慮覺察之語意分析聊天機器人",
+        period: "2025.04 — 2026.06",
+        body: [
+          { h:"研究動機" },
+          { p:"焦慮前驅期好發於大學生與社會新鮮人，傳統心理量表流程制式化，容易引發受試者的自我揭露防衛，難以融入日常捕捉動態情緒變化。本研究基於生成式人工智慧（GAI）技術，整合大語言模型與 Carl Rogers（1951）的人本策略（PCS），將心理量表隱性嵌入自然對話中。" },
+          { h:"系統架構" },
+          { p:"系統由前端對話介面（Discord）、中介層（OpenAI GPT-4o 語意理解與情感推論）、後端（GAD-7 / PANAS 量表加權計算與歷史紀錄）三層組成，並依序以「無條件積極關懷、同理心感受、真誠一致、促進自我揭露」四大核心步驟，引導使用者在互動過程中自我覺察。" },
+          { h:"研究結果" },
+          { p:"採單組前後測設計，搭配系統易用性量表（SUS）與技術接受度模型（TAM）進行成效評估。結果顯示系統回應速度與互動品質深受使用者滿意（PEU=3.86），並能顯著降低受試者心理防衛，促成更深度的自我揭露與情感抒發。研究成果榮獲 TWELF2026 最佳論文獎，並受邀於 ICIET2026、ICIAI2026 進行國際口頭發表。" }
+        ],
+        images: [{ caption:"系統架構圖（前端／中介層／後端三層）" }, { caption:"Discord 對話介面截圖" }],
+        tags: ["LLM","GPT-4o","RAG","GAD-7 / PANAS","Rogers PCS","Discord","SUS / TAM"],
+        links: [{ label:"TWELF 最佳論文獎證明", href:"#publications" }]
+      },
+      en: {
+        tag: "Master's Thesis · TWELF2026 Best Paper Award",
+        title: "LLM-Based Anxiety Awareness Chatbot",
+        sub: "A GAI-Based Semantic Analysis Chatbot Integrating Person-Centered Strategy for Anxiety Awareness",
+        period: "Apr 2025 — Jun 2026",
+        body: [
+          { h:"Motivation" },
+          { p:"The prodromal phase of anxiety is common among college students and young professionals. Traditional psychometric scales, with their rigid, formal procedures, often trigger self-disclosure defensiveness and struggle to capture dynamic emotional changes in daily life. This research integrates large language models with Carl Rogers' (1951) Person-Centered Strategy (PCS), embedding psychometric scales implicitly into natural conversation." },
+          { h:"System Architecture" },
+          { p:"The system consists of three layers: a front-end conversational interface (Discord), a middle layer (OpenAI GPT-4o for semantic understanding and emotional inference), and a back end (weighted GAD-7 / PANAS scoring with history logging). It sequentially applies four PCS core steps — unconditional positive regard, empathic reflection, congruence, and facilitating self-disclosure — to guide users toward self-awareness." },
+          { h:"Results" },
+          { p:"Using a single-group pre/post-test design with the System Usability Scale (SUS) and Technology Acceptance Model (TAM), results showed strong user satisfaction with response speed and interaction quality (PEU=3.86), and a significant reduction in psychological defensiveness, enabling deeper self-disclosure. The research won the TWELF2026 Best Paper Award and was invited for international oral presentations at ICIET2026 and ICIAI2026." }
+        ],
+        images: [{ caption:"System architecture (front-end / middle layer / back end)" }, { caption:"Discord conversation interface screenshot" }],
+        tags: ["LLM","GPT-4o","RAG","GAD-7 / PANAS","Rogers' PCS","Discord","SUS / TAM"],
+        links: [{ label:"TWELF Best Paper Certificate", href:"#publications" }]
+      }
+    },
+    "proj-compal": {
+      zh: {
+        tag: "企業實習專案 · 仁寶電腦",
+        title: "企業自動化工作流與 RAG AI Agent",
+        sub: "仁寶電腦工業股份有限公司（Compal Electronics, Inc.）AI 研發實習專案",
+        period: "2025.07 — 至今",
+        body: [
+          { h:"工作環境" },
+          { p:"仁寶電腦為筆記型電腦及智慧型裝置代工大廠（ODM），任職於總部系統網路處理處軟體開發部，擔任 AI 研發實習生，主要負責公司內部自動化系統與 AI Agents 的研究開發。" },
+          { h:"專案一：跨平台協作自動化流程與系統建置" },
+          { p:"利用 Python 結合 n8n 開源工作流程工具，設計一套兼具即時同步與 AI 摘要的自動化議題追蹤系統，成功降低團隊工程師在日常同步訊息上的時間耗損，大幅提升整體研發團隊的流程效率。" },
+          { h:"專案二：基於 RAG 框架與自動化資料爬蟲之 AI Agent 開發" },
+          { p:"透過 Python 與 GAS 建置網頁爬蟲，並串接 FTP 自動化分類與上傳內外部技術資訊至企業資料庫中，同時藉由 RAG 框架與 Prompt Engineering 技巧訓練 AI Agent 的回應精準度，有效協助公司內部人員的知識獲取及作業運作。" },
+          { h:"心得" },
+          { p:"在實際的企業環境中，深刻體會到一項技術要成功落地，除了需要仰賴技術與系統的穩定度，更注重對真實商用場景的整合效率，也學會站在企業與學術的個別視角看待科技，在技術限制與商業需求之間取得平衡。" }
+        ],
+        images: [{ caption:"仁寶電腦企業實習證明" }, { caption:"自動化系統架構示意" }],
+        tags: ["Python","n8n","RAG","AI Agents","GAS 爬蟲","SFTP"],
+        links: []
+      },
+      en: {
+        tag: "Internship Project · Compal Electronics",
+        title: "Enterprise Automation Workflow &amp; RAG AI Agent",
+        sub: "AI Research &amp; Development Internship Project at Compal Electronics, Inc.",
+        period: "Jul 2025 — Present",
+        body: [
+          { h:"Work Environment" },
+          { p:"Compal Electronics is a major ODM manufacturer of laptops and smart devices. I work as an AI R&amp;D Intern in the Software Development Department under the System &amp; Network Operations Division, focused on internal automation systems and AI Agent development." },
+          { h:"Project 1: Cross-Platform Automated Workflow System" },
+          { p:"Used Python combined with the n8n open-source workflow tool to design an automated issue-tracking system with real-time sync and AI summarization, successfully reducing engineers' time spent on daily status updates and significantly improving overall R&amp;D team efficiency." },
+          { h:"Project 2: RAG-Based AI Agent with Automated Data Crawling" },
+          { p:"Built web crawling pipelines with Python and Google Apps Script (GAS), with automated FTP classification and upload of internal/external technical information into the company database, while training AI Agent response accuracy through a RAG framework and prompt engineering — effectively supporting internal knowledge access and operations." },
+          { h:"Reflection" },
+          { p:"Working in a real enterprise environment taught me that successfully deploying a technology depends not just on system stability, but on integration efficiency in real commercial contexts. I learned to view technology from both an enterprise and academic lens, balancing technical constraints with business needs." }
+        ],
+        images: [{ caption:"Compal Electronics internship certificate" }, { caption:"Automation system architecture diagram" }],
+        tags: ["Python","n8n","RAG","AI Agents","GAS Crawler","SFTP"],
+        links: []
+      }
+    },
+    "proj-bigdata": {
+      zh: {
+        tag: "課程專案 · 大數據資料分析",
+        title: "教育大數據之學生數學學習成效分析",
+        sub: "Big Data Analytics – 教育大數據之平台對學生數學學習成效的延伸探討",
+        period: "課程期末專案 · 個人獨立完成",
+        body: [
+          { p:"本專案為獨立完成的個人期末數據分析報告，以競賽參與為背景，探討數位學習工具普及化下，教育部某數位平台對國小學生之學習成效與行為模式的深遠影響。研究資料源自「113年教育大數據競賽」之開放資料集，針對學生的學科成績、答題正確率及平台使用時間等關鍵指標進行深度挖掘。" },
+          { p:"運用 Python 進行大規模數據的清洗、篩選與特徵整合，透過 R 語言的 ggplot 建立多維度視覺化圖表（箱型圖、散佈圖、密度圖），並導入機器學習演算法，運用支援向量機（SVM）進行成效分類預測，以及基於密度的聚類演算法（DBSCAN）識別學生不同的平台使用行為型態。" },
+          { p:"研究結果不僅量化了數位工具對學業表現的實際效益，更為未來數位教學平台在適性化學習設計與教學現場的輔助應用上，提供了具備科學實證價值的具體優化方向。" }
+        ],
+        images: [{ caption:"DBSCAN 聚類分析視覺化圖" }, { caption:"分析程式碼截圖" }],
+        tags: ["Python","R / ggplot","SVM","DBSCAN"],
+        links: [{ label:"完整報告 .pdf", href:"#" }]
+      },
+      en: {
+        tag: "Coursework · Big Data Analytics",
+        title: "Educational Big Data Analysis of Student Math Learning Outcomes",
+        sub: "Big Data Analytics – Extending the Study of a Digital Platform's Effect on Students' Math Learning Outcomes",
+        period: "Course Final Project · Individual",
+        body: [
+          { p:"An independently completed final data-analysis report, set against a national competition, examining how a Ministry of Education digital platform influences elementary students' learning outcomes and behavior patterns under widespread edtech adoption. Data was drawn from the open dataset of the 2024 Educational Big Data Competition, examining subject grades, answer accuracy, and platform usage time." },
+          { p:"Performed large-scale data cleaning, filtering, and feature engineering with Python; built multi-dimensional visualizations (box plots, scatter plots, density plots) with R's ggplot; and applied machine learning — Support Vector Machine (SVM) for outcome classification and density-based clustering (DBSCAN) to identify distinct patterns of platform usage behavior among students." },
+          { p:"The results quantify the real impact of digital learning tools on academic performance, offering evidence-based optimization directions for adaptive learning design and classroom-support applications of future digital teaching platforms." }
+        ],
+        images: [{ caption:"DBSCAN clustering visualization" }, { caption:"Analysis code screenshot" }],
+        tags: ["Python","R / ggplot","SVM","DBSCAN"],
+        links: [{ label:"Full Report (.pdf)", href:"#" }]
+      }
+    },
+    "proj-vr": {
+      zh: {
+        tag: "課程專案 · 虛擬與擴增實境學習設計",
+        title: "CoSpaces 萬聖節英語教學 VR 場景",
+        sub: "Virtual and Augmented Reality for Learning – 以 CoSpaces 整合萬聖節與小學英文單詞教學應用",
+        period: "課程期末專案 · 三人團隊合作",
+        body: [
+          { p:"三人團隊合作的虛擬實境學習設計，運用 CoSpaces Edu 平台打造一個具備高度沉浸感與互動性的虛擬萬聖節世界。情境分為萬聖街道與萬聖迷宮兩大核心場景，特別針對國小低年級學童的認知發展特點，將萬聖節的由來、西方習俗及相關英文單字轉化為寓教於樂的數位闖關遊戲。" },
+          { p:"於此專案中主要負責 3D 場景設計與整體遊戲的互動腳本與程式邏輯編排，利用 CoSpaces 的區塊程式碼（Blockly）進行事件驅動與條件判斷設計，規劃線索大找碴與迷宮探索的互動邏輯，透過即時的視覺回饋與關卡引導，激發低年級學童的自主好奇心。" },
+          { h:"心得" },
+          { p:"這堂課讓我深刻體會到「沉浸式科技」在現代教育中所蘊含的強大潛能，也讓我從中理解到教學遊戲化（Gamification）的重要性，為數位內容設計與人機互動研究增添了更扎實的實務開發經驗。" }
+        ],
+        images: [{ caption:"萬聖街道 3D 場景截圖" }, { caption:"萬聖節起源關卡畫面" }],
+        tags: ["CoSpaces","Blockly","VR","Gamification"],
+        links: [{ label:"作品連結 · cospaces", href:"#" }, { label:"前導簡報 .pdf", href:"#" }]
+      },
+      en: {
+        tag: "Coursework · VR/AR Learning Design",
+        title: "CoSpaces Halloween VR Scene for English Learning",
+        sub: "Virtual and Augmented Reality for Learning – Integrating Halloween Culture with Elementary English Vocabulary via CoSpaces",
+        period: "Course Final Project · 3-Person Team",
+        body: [
+          { p:"A three-person team virtual-reality learning design built on the CoSpaces Edu platform, creating an immersive, interactive virtual Halloween world across two core scenes — a Halloween street and a Halloween maze. Designed specifically for young elementary learners' cognitive development, it transforms Halloween's origins, Western customs, and related English vocabulary into a playful digital quest game." },
+          { p:"Led 3D scene design and the game's interaction script and programming logic, using CoSpaces' block-based coding tool (Blockly) for event-driven and conditional logic design, structuring the clue-hunt and maze-exploration mechanics. Real-time visual feedback and level guidance were used to spark young learners' curiosity." },
+          { h:"Reflection" },
+          { p:"This course showed me the powerful potential of immersive technology in modern education, and deepened my understanding of gamification's role in learning — adding real hands-on experience to my digital content design and HCI research." }
+        ],
+        images: [{ caption:"Halloween street 3D scene screenshot" }, { caption:"Halloween-origin quest screen" }],
+        tags: ["CoSpaces","Blockly","VR","Gamification"],
+        links: [{ label:"Project Link · cospaces", href:"#" }, { label:"Intro Deck (.pdf)", href:"#" }]
+      }
+    },
+    "proj-ux": {
+      zh: {
+        tag: "課程專案 · 使用者體驗設計",
+        title: "聲無人境 Echo Alone · UX 虛擬展覽",
+        sub: "User Experience Design – 以虛擬展覽為分析與設計",
+        period: "課程期末專案 · 四人團隊合作",
+        body: [
+          { p:"四人團隊合作的期末體驗設計，旨在探討數位社群普及下，現代人表面緊密連結、內心卻愈發疏離的數位孤獨現象。作品以《聲無人境 Echo Alone》為題，建構出一個虛擬空間的孤獨旅程，引導觀者經歷從孤獨到被 AI 理解，最終達成自我察覺的心理轉變。" },
+          { p:"場景設定分為四大階段：象徵起始不安與親情的「曙光之初」、浮現缺席與友情的「艷陽高照」、關係矛盾與愛情的「餘光時分」，以及步入自愛與孤獨自由的「靜夜無聲」。於此專案中主要負責核心主題的動機發想，並透過「日出至夜」的時間動態軸，將 UX 流程圖轉化為具備情感共鳴的敘事影像。" },
+          { h:"心得" },
+          { p:"這堂課讓我真正理解到 UX 的核心不僅僅在於介面的美觀，更在於對人類隱微情感的深度同理與動線引導，為我在學習科技與人機互動（HCI）領域的研究奠定了最扎實的實務設計思維。" }
+        ],
+        images: [{ caption:"《聲無人境 Echo Alone》展覽視覺" }, { caption:"四階段體驗情境示意圖" }],
+        tags: ["UX Design","Storytelling","Video"],
+        links: [{ label:"影片導覽 .mp4", href:"#" }, { label:"專案簡報 .pdf", href:"#" }]
+      },
+      en: {
+        tag: "Coursework · User Experience Design",
+        title: '"Echo Alone" · A UX Virtual Exhibition',
+        sub: "User Experience Design – Analysis and Design Through a Virtual Exhibition",
+        period: "Course Final Project · 4-Person Team",
+        body: [
+          { p:'A four-person team\'s final experience-design project exploring the paradox of digital loneliness — being constantly "connected" on the surface while feeling increasingly isolated within. Titled "Echo Alone," the piece constructs a virtual journey through loneliness, guiding visitors from isolation to being understood by AI, culminating in a moment of self-awareness.' },
+          { p:'The experience unfolds across four stages: "First Light" (anxiety and family ties), "High Noon" (absence and friendship), "Afterglow" (conflict and romance), and "Silent Night" (self-love and solitary freedom). I led the core concept development, using a "sunrise-to-night" timeline to translate a UX flow diagram into an emotionally resonant narrative film.' },
+          { h:"Reflection" },
+          { p:"This course taught me that UX is about far more than visual polish — it's about deep empathy for subtle human emotion and thoughtful flow design, laying the groundwork for my research in learning technology and human-computer interaction." }
+        ],
+        images: [{ caption:'"Echo Alone" exhibition key visual' }, { caption:"Four-stage experience diagram" }],
+        tags: ["UX Design","Storytelling","Video"],
+        links: [{ label:"Video Walkthrough (.mp4)", href:"#" }, { label:"Project Deck (.pdf)", href:"#" }]
+      }
+    },
+    "proj-arpillbag": {
+      zh: {
+        tag: "學士專題 · 國科會大專生研究補助計畫",
+        title: "AR 智慧環保回收藥袋設計",
+        sub: "擴增實境輔助環保回收藥袋與智慧用藥紀錄之應用探索",
+        period: "大學專題研究 · 個人 / 團隊專案",
+        body: [
+          { h:"專案概述" },
+          { p:"本專案以醫療包裝改善與擴增實境應用系統為核心，探索如何將環保回收藥袋與智慧互動技術結合，協助使用者理解用藥資訊、建立用藥紀錄，並提升醫療包裝的再利用與資訊傳達價值。" },
+          { h:"設計重點" },
+          { p:"透過 AR 介面與應用系統設計，將原本靜態的藥袋資訊轉化為可互動、可追蹤的數位內容，包含用藥提醒、藥品資訊輔助與紀錄流程，並以智慧感測與行動應用作為後續延伸方向。" },
+          { h:"研究價值" },
+          { p:"此專題連結醫療包裝、永續設計與人機互動，作為大學階段從數位內容設計轉向學習科技與智慧應用研究的重要跨域實作。" }
+        ],
+        images: [{ caption:"AR 藥袋應用系統介面待補充" }, { caption:"智慧回收藥袋設計示意待補充" }],
+        tags: ["AR","APP","Pillbag","Smart Sensing","Sustainable Design"],
+        links: []
+      },
+      en: {
+        tag: "Undergraduate Research · MOST Undergraduate Research Grant",
+        title: "AR Smart Eco-Friendly Recyclable Pill Bag Design",
+        sub: "Exploring AR-supported recyclable pill bags and smart medication records",
+        period: "Undergraduate Research Project",
+        body: [
+          { h:"Project Overview" },
+          { p:"This project focuses on medical packaging improvement and augmented-reality application design, exploring how recyclable pill bags can be integrated with smart interactive technology to help users understand medication information, build medication records, and increase the communication value of medical packaging." },
+          { h:"Design Focus" },
+          { p:"Through AR interfaces and application-system design, static pill-bag information is transformed into interactive and trackable digital content, including medication reminders, medication-information support, and usage-record workflows, with smart sensing and mobile applications as future extensions." },
+          { h:"Research Value" },
+          { p:"The project connects medical packaging, sustainable design, and HCI, serving as an important cross-disciplinary practice bridging digital content design and smart application research." }
+        ],
+        images: [{ caption:"AR pill-bag application interface coming soon" }, { caption:"Smart recyclable pill-bag design concept coming soon" }],
+        tags: ["AR","APP","Pillbag","Smart Sensing","Sustainable Design"],
+        links: []
+      }
+    },
+    "proj-cultural-vr": {
+      zh: {
+        tag: "產學合作 · 遊戲式 VR 教材",
+        title: "遊戲式 VR 導覽教材開發",
+        sub: "遊戲式虛擬實境導覽教材輔助小學生文化課程教育之研究",
+        period: "產學合作研究專案 · 2023",
+        body: [
+          { h:"專案概述" },
+          { p:"本研究以遊戲式虛擬實境導覽教材輔助小學生文化課程學習，將地方文化內容轉化為沉浸式互動情境，讓學生在探索、任務與導覽中建構文化理解。" },
+          { h:"設計方式" },
+          { p:"教材設計採用遊戲化學習與情境式導覽邏輯，透過 VR 場景、任務提示與互動回饋，引導學生主動觀察文化線索並完成學習任務，以提升課程參與度與學習動機。" },
+          { h:"研究重點" },
+          { p:"專案聚焦於沉浸式教材對文化課程教育成效的支持，並進一步連結學習科技、數位內容設計與人機互動的實務應用。" }
+        ],
+        images: [{ caption:"VR 導覽教材場景截圖待補充" }, { caption:"文化課程學習任務畫面待補充" }],
+        tags: ["Gamified VR","Educational Outcomes","Teaching Materials","Cultural Learning"],
+        links: []
+      },
+      en: {
+        tag: "Industry-Academia Collaboration · Gamified VR Learning Materials",
+        title: "Gamified VR Guide Learning Materials",
+        sub: "VR guide materials supporting elementary students' cultural-course learning",
+        period: "Industry-Academia Research Project · 2023",
+        body: [
+          { h:"Project Overview" },
+          { p:"This project uses gamified virtual-reality guide materials to support elementary students' cultural-course learning, transforming local cultural content into immersive interactive scenes where students build cultural understanding through exploration, missions, and guided learning." },
+          { h:"Design Approach" },
+          { p:"The learning material combines gamified learning with situated guide logic. VR scenes, mission prompts, and interactive feedback guide students to observe cultural clues and complete learning tasks, increasing participation and motivation." },
+          { h:"Research Focus" },
+          { p:"The project examines how immersive learning materials support educational outcomes in cultural courses, connecting learning technology, digital content design, and HCI practice." }
+        ],
+        images: [{ caption:"VR guide scene screenshot coming soon" }, { caption:"Cultural-course learning task screen coming soon" }],
+        tags: ["Gamified VR","Educational Outcomes","Teaching Materials","Cultural Learning"],
+        links: []
+      }
+    },
+    "proj-gcp": {
+      zh: {
+        tag: "自主學習專題 · Google Cloud",
+        title: "Google Cloud 生成式 AI 開發者實務探索",
+        sub: "雲端運算基礎與生成式 AI 開發者之實務探索",
+        period: "自主學習專題 · 2025",
+        body: [
+          { p:"因應科技產業對生成式 AI 的強烈趨勢，且在開發碩論的 LLM 焦慮感測聊天機器人與實習研發的 RAG 架構 AI Agents 時，體會到除了對演算法的理解外，更需要廣泛學習雲端基礎設施與負責任 AI 的佈署等整合技術，因此選擇參與 Google Cloud 數位人才探索計畫進行自主學習。" },
+          { p:"課程涵蓋雲端基礎架構（網路安全、數據管理、雲端運算核心邏輯），以及生成式 AI 開發者入門課程，深入研習大型語言模型（LLM）原理，包含負責任 AI（Responsible AI）的規範，並實作 Vertex AI Studio 平台上的 Prompt 設計與 Gemini 1.0 Pro 應用程式整合技術。" },
+          { h:"心得" },
+          { p:"透過這次系統性的自主學習，了解到雲端在 End-to-End 系統整合的重要性，優秀的 AI 應用不只取決於程式碼，更取決於開發者對人本需求的洞察。" }
+        ],
+        images: [{ caption:"Google Cloud 結業證書" }],
+        tags: ["Vertex AI","Gemini 1.0 Pro","Responsible AI","Prompt Design"],
+        links: []
+      },
+      en: {
+        tag: "Self-Directed Learning · Google Cloud",
+        title: "Google Cloud Generative AI Developer Practicum",
+        sub: "Cloud Computing Foundations &amp; Generative AI Developer Practicum",
+        period: "Self-Directed Learning · 2025",
+        body: [
+          { p:"In response to the strong industry momentum around generative AI — and while building both my thesis's anxiety-detection chatbot and a RAG-based AI Agent during my internship — I recognized the need to go beyond algorithms and broadly study cloud infrastructure and responsible AI deployment, leading me to complete Google Cloud's Digital Talent Exploration Program." },
+          { p:"The curriculum covered cloud infrastructure fundamentals (network security, data management, core cloud computing logic) and an introductory generative AI developer track, studying large language model principles including Responsible AI standards, plus hands-on prompt design and Gemini 1.0 Pro application integration on the Vertex AI Studio platform." },
+          { h:"Reflection" },
+          { p:"This systematic self-study taught me the importance of end-to-end system integration in the cloud — great AI applications depend not just on code, but on a developer's insight into human needs." }
+        ],
+        images: [{ caption:"Google Cloud Certificate of Completion" }],
+        tags: ["Vertex AI","Gemini 1.0 Pro","Responsible AI","Prompt Design"],
+        links: []
+      }
+    },
+    "pub-twelf": {
+      zh: {
+        tag: "TWELF 2026 · 最佳論文獎 · 口頭發表",
+        title: "整合大語言模型與人本策略建構語意分析聊天機器人",
+        sub: "探討生成式人工智慧於大學生焦慮覺察之應用發展",
+        period: "第二十一屆台灣數位學習發展研討會 · 南投 · 2026.03",
+        body: [
+          { h:"摘要" },
+          { p:"焦慮前驅期好發於大學生與社會新鮮人，若未及時覺察會影響後續的學習工作或社會適應，然而傳統心理評量常因流程制式導致受試者產生自我揭露防衛，且難以融入日常捕捉動態情緒變化。本研究基於大語言模型整合人本策略建構聊天機器人，旨在透過語意分析將評估量表隱性嵌入系統，在自然對話中自動偵測受試者焦慮狀態。" },
+          { p:"研究設計採用技術層與心理層作為架構開發，根據階段實驗迭代驗證，從 N=7 受試者為期一週的操作聊天機器人，並施測前後評量、系統易用度問卷等可行性回饋，結果顯示系統回應速度與有效促進自我揭露方面表現良好，期望以數位追蹤輔助傳統心理測量，為預防性心理教育提供潛在焦慮族群檢核先導工具。" },
+          { h:"關鍵詞" },
+          { p:"大語言模型；人本策略；語意分析；生成式人工智慧；焦慮覺察" }
+        ],
+        images: [{ caption:"TWELF2026 最佳論文獎證書" }, { caption:"口頭發表議程截圖" }],
+        tags: ["LLM","PCS","語意分析","GAI","焦慮覺察"],
+        links: [{ label:"論文發表證明", href:"#" }, { label:"最佳論文獎證書", href:"#" }]
+      },
+      en: {
+        tag: "TWELF 2026 · Best Paper Award · Oral Presentation",
+        title: "A Semantic Analysis Chatbot Integrating LLMs and PCS",
+        sub: "GAI Application for Anxiety Awareness in College Students",
+        period: "21st Taiwan E-Learning Forum · Nantou, Taiwan · Mar 2026",
+        body: [
+          { h:"Abstract" },
+          { p:"Anxiety is common among college students and graduates, and delayed recognition can hinder learning, work, and social adaptation. Traditional psychological assessments, constrained by rigid procedures, often trigger self-disclosure defenses and struggle to capture dynamic emotional changes in daily life. This study develops a chatbot grounded in large language models and human-centered design, embedding assessment scales through semantic analysis to automatically detect anxiety during natural conversations." },
+          { p:"The system adopts a dual-layer architecture (technical and psychological) and undergoes phased iterative validation. Results from a week-long deployment with N=7 participants, including pre- and post-assessments and usability surveys, indicate strong response efficiency and enhanced self-disclosure. The study advances traditional psychological measurement through digital tracking, offering an innovative tool for identifying potential anxiety populations in preventive psychological education." },
+          { h:"Keywords" },
+          { p:"Large Language Model (LLM), Person-Centered Strategy (PCS), Semantic Analysis, Generative AI (GAI), Anxiety Awareness" }
+        ],
+        images: [{ caption:"TWELF2026 Best Paper Award certificate" }, { caption:"Oral presentation program screenshot" }],
+        tags: ["LLM","PCS","Semantic Analysis","GAI","Anxiety Awareness"],
+        links: [{ label:"Presentation Certificate", href:"#" }, { label:"Best Paper Certificate", href:"#" }]
+      }
+    },
+    "pub-iciet": {
+      zh: {
+        tag: "ICIET 2026 · 口頭發表",
+        title: "整合心理量表與人本策略之 LLM 聊天機器人：教育場域中的焦慮偵測應用",
+        sub: "第 14 屆資訊與教育科技國際會議",
+        period: "Koriyama, Japan · 2026.04",
+        body: [
+          { h:"摘要" },
+          { p:"本研究以大語言模型嵌入 GAD-7、PANAS 心理量表，結合 OpenAI GPT-4o-mini 模型進行語意轉換，使系統能在自然、非結構化的對話中自動偵測使用者焦慮狀態。系統架構結合 Rogers 人本策略（PCS），以 Discord 作為對話介面，促進使用者的自我揭露與情緒調節。" },
+          { p:"一週的真人測試（N=7）顯示系統具備高知覺易用性（PEU=3.86），並在降低負向情緒上呈現正向效果（d=0.291），驗證此系統作為教育場域早期焦慮偵測與情緒支持工具的可行性。" }
+        ],
+        images: [{ caption:"ICIET2026 論文錄取通知" }, { caption:"發表完成證明" }],
+        tags: ["LLM","AI Chatbot","焦慮偵測","PCS"],
+        links: [{ label:"Notification of Acceptance", href:"#" }, { label:"Certificate", href:"#" }]
+      },
+      en: {
+        tag: "ICIET 2026 · Oral Presentation",
+        title: "An LLM-Based AI Chatbot Integrating Psychometric and People-Centered Strategies for Anxiety Detection in Educational Settings",
+        sub: "2026 14th International Conference on Information and Education Technology",
+        period: "Koriyama, Japan · Apr 2026",
+        body: [
+          { h:"Abstract" },
+          { p:"Anxiety has become one of the most prevalent mental health challenges among Generation Z, potentially impacting learning outcomes, social interactions, and overall well-being. This study uses LLM-embedded psychometric scales (GAD-7 and PANAS) with an OpenAI GPT-4o-mini model for semantic translation, enabling the system to automatically detect users' anxiety states in natural, unstructured conversations." },
+          { p:"The system integrates Rogers' Personalized Strategy (PCS) as a dialogue guide on Discord to promote self-disclosure and emotion regulation. A one-week experimental study on university students (N=7) showed high perceived usability (PEU=3.86) and a positive effect in reducing negative emotions (d=0.291), validating the system's feasibility as an early anxiety-detection and emotional support tool in educational settings." }
+        ],
+        images: [{ caption:"ICIET2026 Notification of Acceptance" }, { caption:"Certificate of Completion" }],
+        tags: ["LLM","AI Chatbot","Anxiety Detection","PCS"],
+        links: [{ label:"Notification of Acceptance", href:"#" }, { label:"Certificate", href:"#" }]
+      }
+    },
+    "pub-iciai": {
+      zh: {
+        tag: "ICIAI 2026 · 口頭發表",
+        title: "基於嵌入式量表與人本策略之 LLM 語意焦慮偵測聊天機器人",
+        sub: "第 10 屆人工智慧創新國際會議 · Paper ID: BAI26-639",
+        period: "Waseda University, Tokyo, Japan · 2026.04",
+        body: [
+          { p:"與 TWELF2026 最佳論文獎同一研究主題的國際發表版本，聚焦於系統的技術架構與可行性驗證，說明如何透過大語言模型與人本策略（PCS）將焦慮量表隱性嵌入自然對話，並於 Waseda University 進行口頭發表。" }
+        ],
+        images: [{ caption:"ICIAI2026 口頭發表證明" }],
+        tags: ["LLM","語意分析","焦慮偵測"],
+        links: [{ label:"Certificate of Oral Presentation", href:"#" }]
+      },
+      en: {
+        tag: "ICIAI 2026 · Oral Presentation",
+        title: "An LLM-Driven Chatbot for Semantic Anxiety Detection Using Embedded Scales and Person-Centred Strategies",
+        sub: "2026 the 10th International Conference on Innovation in Artificial Intelligence · Paper ID: BAI26-639",
+        period: "Waseda University, Tokyo, Japan · Apr 2026",
+        body: [
+          { p:"An international presentation of the same research behind the TWELF2026 Best Paper Award, focused on the system's technical architecture and feasibility validation — demonstrating how an LLM combined with a Person-Centred Strategy (PCS) implicitly embeds anxiety scales into natural conversation. Presented orally at Waseda University." }
+        ],
+        images: [{ caption:"ICIAI2026 Certificate of Oral Presentation" }],
+        tags: ["LLM","Semantic Analysis","Anxiety Detection"],
+        links: [{ label:"Certificate of Oral Presentation", href:"#" }]
+      }
+    },
+    "pub-isasd": {
+      zh: {
+        tag: "ISASD 2024 · 口頭發表",
+        title: "Research Survey on Mutual Assistance of Medical Packaging Improvement and Innovative AR Application Systems",
+        sub: "智慧科學與永續發展論壇",
+        period: "Tokyo Institute of Technology, Tokyo, Japan · 2024.07",
+        body: [
+          { h:"摘要" },
+          { p:"本研究聚焦醫療包裝改善與創新 AR 應用系統之間的互補關係，探討如何透過擴增實境與互動系統設計，提升藥品包裝資訊傳達、用藥理解與永續包裝再利用的可能性。" }
+        ],
+        images: [{ caption:"ISASD 2024 口頭發表證明待補充" }],
+        tags: ["AR","Medical Packaging","Sustainable Design","Smart Application"],
+        links: []
+      },
+      en: {
+        tag: "ISASD 2024 · Oral Presentation",
+        title: "Research Survey on Mutual Assistance of Medical Packaging Improvement and Innovative AR Application Systems",
+        sub: "International Symposium on Smart Science and Sustainable Development",
+        period: "Tokyo Institute of Technology, Tokyo, Japan · Jul 2024",
+        body: [
+          { h:"Abstract" },
+          { p:"This study examines the mutual support between medical packaging improvement and innovative AR application systems, exploring how augmented reality and interactive-system design can improve medication-information communication, user understanding, and the potential reuse value of sustainable packaging." }
+        ],
+        images: [{ caption:"ISASD 2024 oral presentation certificate coming soon" }],
+        tags: ["AR","Medical Packaging","Sustainable Design","Smart Application"],
+        links: []
+      }
+    },
+    "pub-ssim": {
+      zh: {
+        tag: "IEEE SSIM 2023 · 口頭發表",
+        title: "探討以擴增實境輔助環保回收智慧感測藥盒之應用潛力",
+        sub: "社會科學與智慧管理論壇",
+        period: "朝陽科技大學，台中，台灣 · 2023.12",
+        body: [
+          { h:"摘要" },
+          { p:"本研究探討擴增實境技術應用於環保回收智慧感測藥盒的可能性，從使用者互動、用藥資訊呈現與智慧感測輔助等面向，評估 AR 在醫療包裝與健康管理情境中的應用潛力。" }
+        ],
+        images: [{ caption:"IEEE SSIM 2023 口頭發表證明待補充" }],
+        tags: ["AR","Smart Sensing","Pill Box","Health Design"],
+        links: []
+      },
+      en: {
+        tag: "IEEE SSIM 2023 · Oral Presentation",
+        title: "Application Potential of Augmented Reality in Supporting Eco-Friendly Recyclable Smart Sensing Pill Boxes",
+        sub: "Social Sciences and Intelligence Management Forum",
+        period: "Chaoyang University of Technology, Taichung, Taiwan · Dec 2023",
+        body: [
+          { h:"Abstract" },
+          { p:"This study explores the potential of applying augmented reality to eco-friendly recyclable smart sensing pill boxes, evaluating AR's role in user interaction, medication-information presentation, and smart sensing support within medical packaging and health-management contexts." }
+        ],
+        images: [{ caption:"IEEE SSIM 2023 oral presentation certificate coming soon" }],
+        tags: ["AR","Smart Sensing","Pill Box","Health Design"],
+        links: []
+      }
+    },
+    "pub-metaaces": {
+      zh: {
+        tag: "MetaACES 2023 · 口頭發表",
+        title: "Research on the Education of Primary School Students with Game-Style Virtual Reality Guide Materials Assisting Cultural Courses",
+        sub: "教育元宇宙與人工智慧論壇",
+        period: "香港教育大學，香港，中國 · 2023.06",
+        body: [
+          { h:"摘要" },
+          { p:"本研究以遊戲式虛擬實境導覽教材輔助小學生文化課程學習，透過沉浸式場景、導覽任務與互動回饋設計，探討 VR 教材對文化知識理解、學習參與與課程動機之支持。" }
+        ],
+        images: [{ caption:"MetaACES 2023 口頭發表證明待補充" }],
+        tags: ["Gamified VR","Cultural Learning","Elementary Education"],
+        links: []
+      },
+      en: {
+        tag: "MetaACES 2023 · Oral Presentation",
+        title: "Research on the Education of Primary School Students with Game-Style Virtual Reality Guide Materials Assisting Cultural Courses",
+        sub: "Metaverse and Artificial Companions in Education and Society Forum",
+        period: "Education University of Hong Kong, Hong Kong, China · Jun 2023",
+        body: [
+          { h:"Abstract" },
+          { p:"This study investigates gamified virtual-reality guide materials for supporting elementary students' cultural-course learning. Through immersive scenes, guided tasks, and interactive feedback, it explores how VR materials support cultural knowledge understanding, learning participation, and course motivation." }
+        ],
+        images: [{ caption:"MetaACES 2023 oral presentation certificate coming soon" }],
+        tags: ["Gamified VR","Cultural Learning","Elementary Education"],
+        links: []
+      }
+    },
+    "pub-gccce": {
+      zh: {
+        tag: "GCCCE 2023 · 口頭發表",
+        title: "遊戲式虛擬實境導覽教材輔助小學生文化課程教育之研究",
+        sub: "全球華人計算機教育大會",
+        period: "北京師範大學，北京，中國 · 2023.05",
+        body: [
+          { h:"摘要" },
+          { p:"本研究探討遊戲式虛擬實境導覽教材在小學生文化課程中的應用，透過任務導向與情境互動設計，協助學生以探索式方式理解文化內容，並評估其在學習成效與教學現場導入上的可行性。" }
+        ],
+        images: [{ caption:"GCCCE 2023 口頭發表證明待補充" }],
+        tags: ["VR","Gamification","Cultural Course","Learning Materials"],
+        links: []
+      },
+      en: {
+        tag: "GCCCE 2023 · Oral Presentation",
+        title: "Gamified Virtual-Reality Guide Materials for Supporting Elementary Students' Cultural-Course Learning",
+        sub: "Global Chinese Conference on Computers in Education",
+        period: "Beijing Normal University, Beijing, China · May 2023",
+        body: [
+          { h:"Abstract" },
+          { p:"This study examines gamified virtual-reality guide materials in elementary cultural courses. Through task-oriented and situated interactive design, it helps students understand cultural content through exploration and evaluates feasibility for learning outcomes and classroom implementation." }
+        ],
+        images: [{ caption:"GCCCE 2023 oral presentation certificate coming soon" }],
+        tags: ["VR","Gamification","Cultural Course","Learning Materials"],
+        links: []
+      }
+    }
+  };
+
+  function renderModal(id){
+    const entry = DETAILS[id];
+    if(!entry) return "";
+    const d = entry[currentLang] || entry.zh;
+    let html = `<div class="modal-tag">${d.tag}</div>`;
+    html += `<h3>${d.title}</h3>`;
+    if(d.sub) html += `<div class="modal-sub">${d.sub}</div>`;
+    if(d.period) html += `<div class="modal-period">${d.period}</div>`;
+    html += `<div class="modal-body">`;
+    d.body.forEach(b => {
+      if(b.h) html += `<h4>${b.h}</h4>`;
+      if(b.p) html += `<p>${b.p}</p>`;
+    });
+    html += `</div>`;
+    if(d.images && d.images.length){
+      html += `<div class="modal-imgs">`;
+      d.images.forEach(img => {
+        if(img.src){
+          html += `<img src="${img.src}" alt="${img.caption}" style="border-radius:6px;border:1px solid var(--line);width:100%;">`;
+        } else {
+          const noImgLabel = currentLang === "zh" ? "圖片待補充" : "Image coming soon";
+          html += `<div class="img-placeholder">📷<span>${img.caption}</span><span style="opacity:.7;">${noImgLabel}</span></div>`;
+        }
+      });
+      html += `</div>`;
+    }
+    if(d.tags && d.tags.length){
+      html += `<div class="modal-tags">` + d.tags.map(t => `<span class="tag">${t}</span>`).join("") + `</div>`;
+    }
+    if(d.links && d.links.length){
+      html += `<div class="modal-links">` + d.links.map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.label} ↗</a>`).join("") + `</div>`;
+    }
+    return html;
+  }
+
+  function openModal(id){
+    const html = renderModal(id);
+    if(!html) return;
+    document.getElementById("modalContent").innerHTML = html;
+    document.getElementById("modalOverlay").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(){
+    document.getElementById("modalOverlay").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  document.getElementById("modalClose").addEventListener("click", closeModal);
+  document.getElementById("modalOverlay").addEventListener("click", (e) => {
+    if(e.target.id === "modalOverlay") closeModal();
+  });
+  document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-detail]");
+    if(!trigger) return;
+    e.preventDefault();
+    openModal(trigger.dataset.detail);
+  });
+
+  // vCard
+  const vcard = [
+    "BEGIN:VCARD","VERSION:3.0",
+    "N:林;佳妤;;;",
+    "FN:林佳妤 Jia-Yu Lin (Tess)",
+    "NICKNAME:Tess",
+    "TITLE:AI Research & Development Engineer (Intern)",
+    "ORG:Compal Electronics\\, Inc.",
+    "TEL;TYPE=CELL,VOICE:+886988150796",
+    "EMAIL;TYPE=INTERNET,PREF:iotesslin@gmail.com",
+    "ADR;TYPE=WORK:Taiwan",
+    "NOTE:MS Candidate\\, Institute of Learning Sciences and Technologies\\, National Tsing Hua University. Focus: LLM / RAG / Human-Computer Interaction.",
+    "END:VCARD"
+  ].join("\r\n");
+
+  // Attach the download handler FIRST — this must work even if the QR
+  // code library below fails to load (blocked network, ad-blocker, offline).
+  document.getElementById("downloadVcf").addEventListener("click", (e) => {
+    e.preventDefault();
+    const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "Jia-Yu_Lin.vcf";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast(I18N[currentLang]["toast-vcf"]);
+  });
+
+  // QR code is generated by an external CDN script — wrap it so that if the
+  // library fails to load, it only affects the QR image and never blocks
+  // the rest of the page's functionality (like the download button above).
+  try {
+    new QRCode(document.getElementById("qrcode"), {
+      text: vcard, width: 96, height: 96, correctLevel: QRCode.CorrectLevel.M
+    });
+  } catch(err) {
+    console.warn("QR code library failed to load; showing fallback.", err);
+    const qrEl = document.getElementById("qrcode");
+    if(qrEl){
+      qrEl.style.display = "flex";
+      qrEl.style.alignItems = "center";
+      qrEl.style.justifyContent = "center";
+      qrEl.style.fontSize = "10px";
+      qrEl.style.textAlign = "center";
+      qrEl.style.color = "var(--ink-soft)";
+      qrEl.style.padding = "8px";
+      qrEl.textContent = currentLang === "zh" ? "QR Code 載入失敗，請改用下載按鈕" : "QR code unavailable — use the download button";
+    }
+  }
+
+  function showToast(msg){
+    const t = document.getElementById("toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => t.classList.remove("show"), 1800);
+  }
+
+  // background node-grid (echoes business-card motif)
+  function drawNodes(svgId, color){
+    const svg = document.getElementById(svgId);
+    if(!svg) return;
+    const ns = "http://www.w3.org/2000/svg";
+    const w = svg.parentElement.offsetWidth || window.innerWidth;
+    const h = svg.parentElement.offsetHeight || 600;
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    svg.setAttribute("width", w); svg.setAttribute("height", h);
+    const cols = Math.ceil(w/90)+1, rows = Math.ceil(h/90)+1;
+    const pts = [];
+    for(let i=0;i<cols;i++){ for(let j=0;j<rows;j++){
+      pts.push([i*90+(j%2===0?0:45), j*90]);
+    }}
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lines = document.createElementNS(ns,"g"), dots = document.createElementNS(ns,"g");
+    pts.forEach(([x,y],i)=>{ pts.forEach(([x2,y2],j)=>{
+      if(j<=i) return;
+      if(Math.hypot(x-x2,y-y2)<100 && Math.random()<0.28){
+        const l = document.createElementNS(ns,"line");
+        l.setAttribute("x1",x); l.setAttribute("y1",y); l.setAttribute("x2",x2); l.setAttribute("y2",y2);
+        l.setAttribute("stroke",color); l.setAttribute("stroke-width","1");
+        lines.appendChild(l);
+      }
+    });});
+    pts.forEach(([x,y])=>{
+      if(Math.random()<0.55) return;
+      const c = document.createElementNS(ns,"circle");
+      c.setAttribute("cx",x); c.setAttribute("cy",y); c.setAttribute("r","1.6");
+      c.setAttribute("fill",color); c.setAttribute("opacity","0.35");
+      if(!reduceMotion){
+        const anim = document.createElementNS(ns,"animate");
+        anim.setAttribute("attributeName","opacity");
+        anim.setAttribute("values","0.1;0.4;0.1");
+        anim.setAttribute("dur",(4+Math.random()*4)+"s");
+        anim.setAttribute("repeatCount","indefinite");
+        c.appendChild(anim);
+      }
+      dots.appendChild(c);
+    });
+    svg.appendChild(lines); svg.appendChild(dots);
+  }
+  try{
+    drawNodes("bg-nodes", "#C79BC0");
+    drawNodes("bg-nodes-2", "#F0A73C");
+  } catch(err){
+    console.warn("Decorative background failed to render (non-critical).", err);
+  }
+</script>
+
+</body>
+</html>
